@@ -1,0 +1,36 @@
+<template>
+  <v-progress-linear v-model="wordTime"></v-progress-linear>
+</template>
+
+<script>
+
+import { mapState, mapActions } from 'vuex';
+
+export default {
+  name: 'TypoWordTimeGage',
+  computed: {
+    ...mapState([
+      'wordTime',
+    ])
+  },
+  mounted() {
+    this.start();
+  },
+  methods: {
+    ...mapActions([
+      'subtractWordTime',
+    ]),
+    start() {
+      this.timer = setInterval(() => {
+        if (this.wordTime > 0) {
+          this.subtractWordTime(1);
+        } else {
+          clearInterval(this.timer);
+          //単語をリセット
+        }
+      }, 50);
+    }
+  }
+}
+
+</script>
