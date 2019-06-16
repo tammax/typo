@@ -6,7 +6,9 @@
       :width="15"
       :value="playTime"
       color="blue"
-    >{{ playTime }}</v-progress-circular>
+    >
+      {{ playTime }}
+    </v-progress-circular>
   </div>
 </template>
 
@@ -38,6 +40,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-</style>

@@ -2,7 +2,7 @@
   <div>
     <TypoEnWord :letters="word.letters" />
     <TypoJpWord :word="word.jp" />
-    <input v-if="isMobile" type="password" autofocus spellcheck="false">
+    <input v-if="isMobile" type="password" autofocus spellcheck="false" />
   </div>
 </template>
 
@@ -55,7 +55,10 @@ export default {
           this.incrementSuccessCount();
           if (this.lettersCount == letters.length) {
             this.addChainCount(letters.length);
-            this.calculateAddScore({ chainCount: this.chainCount, length: letters.length });
+            this.calculateAddScore({
+              chainCount: this.chainCount,
+              length: letters.length
+            });
             this.nextWord();
           }
         } else {

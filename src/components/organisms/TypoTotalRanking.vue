@@ -31,9 +31,9 @@ export default {
           this.rankings.push(doc.data());
         });
       });
-      // .catch(function(error) {
-      //   console.log("Error getting document:", error);
-      // });
+    // .catch(function(error) {
+    //   console.log("Error getting document:", error);
+    // });
   }
 };
 </script>

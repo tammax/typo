@@ -6,10 +6,28 @@
           <template v-for="(ranking, index) in rankings">
             <v-list-tile :key="index">
               <v-list-tile-action class="rank">
-                <v-icon v-if="index === 0" large class="crown" color="#DBB400">fa-crown</v-icon>
-                <v-icon v-else-if="index === 1" large class="crown" color="#C9CACA">fa-crown</v-icon>
-                <v-icon v-else-if="index === 2" large class="crown" color="#C47022">fa-crown</v-icon>
-                <v-list-tile-action-text class="number">{{ index + 1 }}</v-list-tile-action-text>
+                <v-icon v-if="index === 0" large class="crown" color="#DBB400">
+                  fa-crown
+                </v-icon>
+                <v-icon
+                  v-else-if="index === 1"
+                  large
+                  class="crown"
+                  color="#C9CACA"
+                >
+                  fa-crown
+                </v-icon>
+                <v-icon
+                  v-else-if="index === 2"
+                  large
+                  class="crown"
+                  color="#C47022"
+                >
+                  fa-crown
+                </v-icon>
+                <v-list-tile-action-text class="number">
+                  {{ index + 1 }}
+                </v-list-tile-action-text>
               </v-list-tile-action>
 
               <v-list-tile-content>
@@ -29,7 +47,8 @@
                 </v-list-tile-sub-title>
               </v-list-tile-content>
             </v-list-tile>
-            <v-divider v-if="index + 1 < rankings.length" :key="index + 100"></v-divider>
+            <v-divider v-if="index + 1 < rankings.length" :key="index + 100">
+            </v-divider>
           </template>
         </v-list>
       </v-card>

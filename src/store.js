@@ -146,7 +146,7 @@ export default new Vuex.Store({
       commit("resetChainCount");
     },
     calculateAddScore({ commit }, { chainCount, length }) {
-      let addScore = (ADD_SCORE * length) + length * 10;
+      let addScore = ADD_SCORE * length + length * 10;
       if (chainCount > 100) {
         addScore = addScore * 1.5;
       } else if (chainCount > 50) {
