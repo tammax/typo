@@ -8,7 +8,7 @@
             <template>
               <transition>
                 <div class="alert" v-if="this.rank > 0">
-                  Total Rank {{rank}}
+                  Total Rank {{ rank }}
                 </div>
               </transition>
               <v-list-tile-action>
@@ -149,10 +149,10 @@ export default {
           .then(function({ id }) {
             // console.log(`document writing sucess: id ${id}`);
             resolve(id);
-          })
-          // .catch(function(error) {
-          //   console.error("Error writing document: ", error);
-          // });
+          });
+        // .catch(function(error) {
+        //   console.error("Error writing document: ", error);
+        // });
       });
     },
 
@@ -174,9 +174,9 @@ export default {
             let rank = _.findIndex(rankings, ["id", id]) + 1;
             resolve(rank);
           });
-          // .catch(function(error) {
-          //   console.log("Error getting document:", error);
-          // });
+        // .catch(function(error) {
+        //   console.log("Error getting document:", error);
+        // });
       });
     }
   }
