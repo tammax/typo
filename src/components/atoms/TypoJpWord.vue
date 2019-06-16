@@ -5,14 +5,12 @@
 </template>
 
 <script>
-
 export default {
-  name: 'TypoJpWord',
+  name: "TypoJpWord",
   props: {
-    word: String,
-  },
-}
-
+    word: String
+  }
+};
 </script>
 
 <style lang="scss" scoped>

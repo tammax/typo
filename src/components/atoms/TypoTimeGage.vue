@@ -1,48 +1,43 @@
 <template>
   <div>
-      <v-progress-circular
-        :rotate="-90"
-        :size="100"
-        :width="15"
-        :value="time"
-        color="blue"
-      >
-        {{ time }}
-      </v-progress-circular>
+    <v-progress-circular
+      :rotate="-90"
+      :size="100"
+      :width="15"
+      :value="playTime"
+      color="blue"
+    >{{ playTime }}</v-progress-circular>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'TypoTimeGage',
-  data: () => {
-    return {
-      time: 30,
-    }
+  name: "TypoTimeGage",
+  computed: {
+    ...mapState(["playTime"])
   },
   mounted() {
     this.start();
   },
-  beforeRouteLeave (route, redirect, next) {
-    alert("beforeRouteEnter");
-    // getPost(route.params.id, (err, post) => {
-    //   next(vm => vm.setData(err, post))
-    // })
-    next();
-  },
   methods: {
+    ...mapActions(["subtractPlayTime", "setPlayTimer", "resetPlayTimer"]),
     start() {
-      this.timer = setInterval(() => {
-        if (this.time > 0) {
-          this.time--;
+      this.resetPlayTimer();
+      let timer = setInterval(() => {
+        if (this.playTime > 0) {
+          this.subtractPlayTime(1);
         } else {
-          clearInterval(this.timer);
+          this.resetPlayTimer();
           this.$router.push({ path: "result" });
         }
       }, 1000);
+      this.setPlayTimer(timer);
     }
   }
-}
-
+};
 </script>
+
+<style lang="scss" scoped>
+</style>

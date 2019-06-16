@@ -3,34 +3,36 @@
 </template>
 
 <script>
-
-import { mapState, mapActions } from 'vuex';
+import { mapState, mapActions } from "vuex";
 
 export default {
-  name: 'TypoWordTimeGage',
+  name: "TypoWordTimeGage",
   computed: {
-    ...mapState([
-      'wordTime',
-    ])
+    ...mapState(["wordTime"])
   },
   mounted() {
     this.start();
   },
   methods: {
     ...mapActions([
-      'subtractWordTime',
+      "subtractWordTime",
+      "nextWord",
+      "setWordTimer",
+      "resetWordTimer"
     ]),
     start() {
-      this.timer = setInterval(() => {
+      this.resetWordTimer();
+      let timer = setInterval(() => {
         if (this.wordTime > 0) {
-          this.subtractWordTime(1);
+          this.subtractWordTime(4);
         } else {
-          clearInterval(this.timer);
           //単語をリセット
+          this.nextWord();
+          this.start();
         }
-      }, 50);
+      }, 400);
+      this.setWordTimer(timer);
     }
   }
-}
-
+};
 </script>

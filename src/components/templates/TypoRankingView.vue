@@ -1,56 +1,27 @@
-<template>
-  <div>
-    <p>ランキングページ</p>
-    <!-- <ul>
-      <li v-for="(ranking, index) in rankings" :key="index">
-        <v-icon>fa-crown</v-icon>
-        <div>{{ index + 1 }}</div>
-        <div>{{ ranking.score }}</div>
-        <div>{{ ranking.maxChainCount }}</div>
-        <div>{{ ranking.successCount }}</div>
-        <div>{{ ranking.missCount }}</div>
-      </li>
-    </ul> -->
-    <TypoDailyRanking />
-    <TypoTotalRanking />
-  </div>
+<template lang="pug">
+  div
+    h1 RANKING
+    TypoTotalRanking
+    TypoTopButton
 </template>
 
 <script>
-
-import TypoDailyRanking from '@/components/molecules/TypoDailyRanking.vue';
-import TypoTotalRanking from '@/components/molecules/TypoTotalRanking.vue';
-
-
-//import {db} from '@/config/firebase';
+// import TypoDailyRanking from "@/components/organisms/TypoDailyRanking.vue";
+import TypoTotalRanking from "@/components/organisms/TypoTotalRanking.vue";
+import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
 
 export default {
-  name: 'TypoRankingView',
-  // data() {
-  //   return {
-  //     rankings: []
-  //   }
-  // },
+  name: "TypoRankingView",
   components: {
-    TypoDailyRanking,
+    // TypoDailyRanking,
     TypoTotalRanking,
-  },
-  // mounted() {
-  //   db.collection("playResults").orderBy("score", "desc").limit(5)
-  //   .get()
-  //   .then((data) => {
-  //     data.forEach((doc) => {
-  //       console.log(doc.id, " => ", doc.data());
-  //       this.rankings.push(doc.data());
-  //     })
-  //   })
-  //   .catch(function(error) {
-  //     console.log("Error getting document:", error);
-  //   });
-  // }}
-}
+    TypoTopButton
+  }
+};
 </script>
 
 <style scoped>
-
+h1 {
+  color: #ffffff;
+}
 </style>

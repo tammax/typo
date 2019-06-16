@@ -3,9 +3,15 @@
     <span
       v-for="(letter, index) in letters"
       :key="index"
-      :class="{ current: isCurrent(index), inputed: isInputed(index), space:isSpace(letter) }"
+      :class="{
+        current: isCurrent(index),
+        inputed: isInputed(index),
+        space: isSpace(letter)
+      }"
       class="letter"
-    >{{ letter | replaceSpace }}</span>
+    >
+      {{ letter | replaceSpace }}
+    </span>
   </div>
 </template>
 
@@ -29,7 +35,7 @@ export default {
     },
     isSpace(letter) {
       return letter === " ";
-    },
+    }
   },
   filters: {
     replaceSpace(letter) {

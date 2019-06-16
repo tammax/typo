@@ -1,21 +1,19 @@
-<template>
-  <div>
-    <TypoGameScreen />
-    <TypeQuitButton />
-  </div>
+<template lang="pug">
+  div
+    TypoGameScreen
+    TypoTopButton
 </template>
 
 <script>
-
-import TypoGameScreen from '@/components/organisms/TypoGameScreen.vue'
-import TypeQuitButton from '@/components/atoms/TypoQuitButton.vue';
+import TypoGameScreen from "@/components/organisms/TypoGameScreen.vue";
+import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
 
 export default {
-  name: 'TypoTypingView',
+  name: "TypoTypingView",
   components: {
     TypoGameScreen,
-    TypeQuitButton,
-  },
+    TypoTopButton
+  }
   // beforeRouteLeave (route, redirect, next) {
   //   alert("beforeRouteEnter");
   //   // getPost(route.params.id, (err, post) => {
@@ -32,10 +30,7 @@ export default {
   //     alert("fetchData");
   //   }
   // }
-}
+};
 </script>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>

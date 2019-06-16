@@ -1,10 +1,10 @@
 <template lang="pug">
-  v-btn(flat to="/ranking" large) Ranking
+  v-btn(flat large disabled) Training
 </template>
 
 <script>
 export default {
-  name: "TypoRankingButton"
+  name: "TypoTrainingButton"
 };
 </script>
 

@@ -1,88 +1,109 @@
 <template>
-    <v-layout row>
-      <v-flex xs12 sm6 offset-sm3>
-        <v-card>
-          <v-list three-line>
-            <template v-for="(item, index) in items">
-              <v-subheader
-                v-if="item.header"
-                :key="item.header"
-              >
-                {{ item.header }}
-              </v-subheader>
-              <v-divider
-                v-else-if="item.divider"
-                :key="index"
-                :inset="item.inset"
-              ></v-divider>
-              <v-list-tile
-                v-else
-                :key="item.title"
-                avatar
-                @click="hoge"
-              >
-                <v-list-tile-avatar>
-                  <img :src="item.avatar">
-                </v-list-tile-avatar>
-                <v-list-tile-content>
-                  <v-list-tile-title v-html="item.title"></v-list-tile-title>
-                  <v-list-tile-sub-title v-html="item.subtitle"></v-list-tile-sub-title>
-                </v-list-tile-content>
-              </v-list-tile>
-            </template>
-          </v-list>
-        </v-card>
-      </v-flex>
-    </v-layout>
+  <v-layout row align-space-around>
+    <v-flex xs12 sm4 offset-sm4>
+      <v-card>
+        <v-list three-line>
+          <template v-for="(ranking, index) in rankings">
+            <v-list-tile :key="index">
+              <v-list-tile-action class="rank">
+                <v-icon v-if="index === 0" large class="crown" color="#DBB400">fa-crown</v-icon>
+                <v-icon v-else-if="index === 1" large class="crown" color="#C9CACA">fa-crown</v-icon>
+                <v-icon v-else-if="index === 2" large class="crown" color="#C47022">fa-crown</v-icon>
+                <v-list-tile-action-text class="number">{{ index + 1 }}</v-list-tile-action-text>
+              </v-list-tile-action>
+
+              <v-list-tile-content>
+                <v-list-tile-title class="score">
+                  {{ ranking.score }}
+                  <span>pt</span>
+                </v-list-tile-title>
+                <v-list-tile-sub-title class="chain-rate">
+                  <div>
+                    {{ ranking.maxChainCount }}
+                    <span>chain</span>
+                  </div>
+                  <div>
+                    {{ ranking.rate }}
+                    <span>%</span>
+                  </div>
+                </v-list-tile-sub-title>
+              </v-list-tile-content>
+            </v-list-tile>
+            <v-divider v-if="index + 1 < rankings.length" :key="index + 100"></v-divider>
+          </template>
+        </v-list>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
-
 export default {
-  name: 'TypoRankingBox',
-
-  data () {
-    return {
-      items: [
-        { header: 'Today' },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
-          title: 'Brunch this weekend?',
-          subtitle: "<span class='text--primary'>Ali Connors</span> &mdash; I'll be in your neighborhood doing errands this weekend. Do you want to hang out?"
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/2.jpg',
-          title: 'Summer BBQ <span class="grey--text text--lighten-1">4</span>',
-          subtitle: "<span class='text--primary'>to Alex, Scott, Jennifer</span> &mdash; Wish I could come, but I'm out of town this weekend."
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/3.jpg',
-          title: 'Oui oui',
-          subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?"
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/4.jpg',
-          title: 'Birthday gift',
-          subtitle: "<span class='text--primary'>Trevor Hansen</span> &mdash; Have any ideas about what we should get Heidi for her birthday?"
-        },
-        { divider: true, inset: true },
-        {
-          avatar: 'https://cdn.vuetifyjs.com/images/lists/5.jpg',
-          title: 'Recipe to try',
-          subtitle: "<span class='text--primary'>Britta Holt</span> &mdash; We should eat this: Grate, Squash, Corn, and tomatillo Tacos."
-        }
-      ]
+  name: "TypoRankingBox",
+  props: {
+    rankings: {
+      type: Array
     }
-  },
-  components: {},
-  mounted() {},
-  methods: {
-    hoge() {
+  }
+};
+</script>
 
+<style lang="scss" scoped>
+.v-list__tile {
+  .score {
+    font-size: 28px;
+    text-align: center;
+
+    span {
+      font-size: 15px;
+      padding: 10px;
+    }
+  }
+
+  .chain-rate {
+    font-size: 15px;
+    text-align: center;
+    display: block;
+    padding-top: 10px;
+
+    div {
+      display: inline-block;
+      padding: 0 8px;
+
+      span {
+        font-size: 11px;
+        padding: 2px;
+      }
+    }
+  }
+
+  .rank {
+    position: relative;
+
+    .crown {
+      vertical-align: sub;
+      margin: auto;
+    }
+
+    .number {
+      position: absolute;
+      left: 25%;
+      font-size: 45px;
+      font-weight: bold;
+      z-index: 1;
+      margin: 0 auto;
+      color: #ffffff;
+      text-shadow: 2px 2px 1px #2c3e50, -2px 2px 1px #2c3e50,
+        2px -2px 1px #2c3e50, -2px -2px 1px #2c3e50;
     }
   }
 }
-</script>
+</style>
+
+<style lang="scss">
+// .v-card .crown:first-child {
+//   color: #DBB400;
+//   // #C9CACA
+//   // #C47022
+// }
+</style>

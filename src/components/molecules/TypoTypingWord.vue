@@ -1,34 +1,26 @@
 <template>
   <div>
-    <TypoEnWord :letters="word.letters"/>
-    <TypoJpWord :word="word.jp"/>
+    <TypoEnWord :letters="word.letters" />
+    <TypoJpWord :word="word.jp" />
     <input v-if="isMobile" type="password" autofocus spellcheck="false">
   </div>
 </template>
 
 <script>
-import _ from "lodash";
 import TypoEnWord from "@/components/atoms/TypoEnWord.vue";
 import TypoJpWord from "@/components/atoms/TypoJpWord.vue";
 import isMobile from "ismobilejs";
-
-import { mapState, mapActions } from 'vuex';
-import words from "@/assets/words.json";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "TypoTypingWord",
   data: () => {
     return {
-      words: [],
-      word: { letters: [], jp: "" },
-      isMobile: isMobile.any,
+      isMobile: isMobile.any
     };
   },
   computed: {
-    ...mapState([
-      'lettersCount',
-      'chainCount',
-    ])
+    ...mapState(["word", "lettersCount", "chainCount"])
   },
   components: {
     TypoEnWord,
@@ -39,34 +31,37 @@ export default {
     window.addEventListener("click", this.focusTypingArea, true);
     window.addEventListener("touchstart", this.focusTypingArea, true);
     this.focusTypingArea();
-    this.words = words;
-    this.word = _.sample(this.words);
+    this.nextWord();
   },
   methods: {
     ...mapActions([
-      'incrementLettersCount',
-      'resetLettersCount',
-      'addChainCount',
-      'resetChainCount',
-      'calculateAddScore',
-      'incrementSuccessCount',
-      'incrementMissCount',
+      "incrementLettersCount",
+      "addChainCount",
+      "resetChainCount",
+      "calculateAddScore",
+      "incrementSuccessCount",
+      "incrementMissCount",
+      "nextWord",
+      "addMissKey"
     ]),
     typeLetters({ key }) {
       let letters = this.word.letters;
       if (letters) {
-        if (letters[this.lettersCount].toUpperCase() == key.toUpperCase()) {
+        //表示された文字が入力した文字と正しいか判定
+        let showLetter = letters[this.lettersCount].toUpperCase();
+        if (showLetter == key.toUpperCase()) {
           this.incrementLettersCount();
-          this.calculateAddScore(this.chainCount);
+          // this.calculateAddScore(this.chainCount);
           this.incrementSuccessCount();
           if (this.lettersCount == letters.length) {
-            this.word = _.sample(this.words);
             this.addChainCount(letters.length);
-            this.resetLettersCount();
+            this.calculateAddScore({ chainCount: this.chainCount, length: letters.length });
+            this.nextWord();
           }
         } else {
           if (key !== "Shift") {
             this.incrementMissCount();
+            this.addMissKey(showLetter);
             this.resetChainCount();
           }
         }
@@ -86,14 +81,8 @@ export default {
 input {
   caret-color: transparent;
   outline: none;
-  /*
-  color: transparent;
-  */
   color: gray;
   text-decoration-line: none;
-  /*
-  font-size: 16px;
-  */
   height: 20px;
   font-size: 20px;
   transform: scale(0.8);
