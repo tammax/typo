@@ -173,7 +173,7 @@ export default {
             });
             let rank = _.findIndex(rankings, ["id", id]) + 1;
             resolve(rank);
-          })
+          });
           // .catch(function(error) {
           //   console.log("Error getting document:", error);
           // });

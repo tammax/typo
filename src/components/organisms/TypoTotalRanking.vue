@@ -30,7 +30,7 @@ export default {
           // console.log(doc.id, " => ", doc.data());
           this.rankings.push(doc.data());
         });
-      })
+      });
       // .catch(function(error) {
       //   console.log("Error getting document:", error);
       // });
