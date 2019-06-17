@@ -2,8 +2,10 @@
   div#row
     div.heading Chain
     div.value {{ chainCount }}
-    transition(v-on:after-enter="chainBadge = false")
-      div.badge(v-show="chainBadge") +{{ addChain }}
+    transition(v-on:after-enter="chainPlusBadge = false")
+      div.badge(v-show="chainPlusBadge") +{{ addChain }}
+    transition(v-on:after-enter="chainMinusBadge = false")
+      div.badge(v-show="chainMinusBadge") {{ addChain }}
 </template>
 
 <script>
@@ -14,7 +16,8 @@ export default {
   data() {
     return {
       addChain: 0,
-      chainBadge: false
+      chainPlusBadge: false,
+      chainMinusBadge: false
     };
   },
   computed: {
@@ -23,7 +26,11 @@ export default {
   watch: {
     chainCount(after, before) {
       this.addChain = after - before;
-      this.chainBadge = true;
+      if (this.addChain >= 0) {
+        this.chainPlusBadge = true;
+      } else {
+        this.chainMinusBadge = true;
+      }
     }
   }
 };

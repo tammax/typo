@@ -25,9 +25,11 @@ export default {
     TypoEnWord,
     TypoJpWord
   },
-  mounted() {
+  beforeCreated() {
     // storeデータのリセット
     this.resetStore();
+  },
+  mounted() {
     window.addEventListener("keyup", this.typeLetters, true);
     window.addEventListener("click", this.focusTypingArea, true);
     window.addEventListener("touchstart", this.focusTypingArea, true);

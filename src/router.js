@@ -12,20 +12,20 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: '/',
+      path: "/",
       component: TypoStartView
     },
     {
-      path: '/typing',
-      component: TypoTypingView,
+      path: "/typing",
+      component: TypoTypingView
     },
     {
-      path: '/ranking',
-      component: TypoRankingView,
+      path: "/ranking",
+      component: TypoRankingView
     },
     {
-      path: '/result',
-      component: TypoResutlView,
-    },
+      path: "/result",
+      component: TypoResutlView
+    }
   ]
 });
