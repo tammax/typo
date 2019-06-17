@@ -13,6 +13,9 @@ export default {
   mounted() {
     this.start();
   },
+  destroyed() {
+    this.resetWordTimer();
+  },
   methods: {
     ...mapActions([
       "subtractWordTime",
@@ -21,14 +24,13 @@ export default {
       "resetWordTimer"
     ]),
     start() {
-      this.resetWordTimer();
       let timer = setInterval(() => {
         if (this.wordTime > 0) {
           this.subtractWordTime(4);
         } else {
           //単語をリセット
           this.nextWord();
-          this.start();
+          this.resetWordTimer();
         }
       }, 400);
       this.setWordTimer(timer);

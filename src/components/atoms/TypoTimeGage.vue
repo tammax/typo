@@ -20,6 +20,9 @@ export default {
   mounted() {
     this.start();
   },
+  destroyed() {
+    this.resetPlayTimer();
+  },
   methods: {
     ...mapActions(["subtractPlayTime", "setPlayTimer", "resetPlayTimer"]),
     start() {
@@ -28,7 +31,6 @@ export default {
         if (this.playTime > 0) {
           this.subtractPlayTime(1);
         } else {
-          this.resetPlayTimer();
           this.$router.push({ path: "result" });
         }
       }, 1000);

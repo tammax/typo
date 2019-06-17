@@ -34,6 +34,11 @@ export default {
     this.focusTypingArea();
     this.nextWord();
   },
+  beforeDestroy() {
+    window.removeEventListener("keyup", this.typeLetters, true);
+    window.removeEventListener("click", this.focusTypingArea, true);
+    window.removeEventListener("touchstart", this.focusTypingArea, true);
+  },
   methods: {
     ...mapActions([
       "incrementLettersCount",
@@ -55,7 +60,7 @@ export default {
           this.incrementLettersCount();
           // this.calculateAddScore(this.chainCount);
           this.incrementSuccessCount();
-          if (this.lettersCount == letters.length) {
+          if (this.lettersCount === letters.length) {
             this.addChainCount(letters.length);
             this.calculateAddScore({
               chainCount: this.chainCount,

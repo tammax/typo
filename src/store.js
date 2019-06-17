@@ -110,7 +110,11 @@ export default new Vuex.Store({
       state.word = payload;
     },
     nextWord(state) {
+      //Deepコピーした方がいいかも
       state.word = _.sample(words);
+      // console.log("--------");
+      // console.log(state.word);
+      // console.log("/--------");
       state.lettersCount = 0;
       state.wordTime = WORD_TIME;
     },
@@ -123,15 +127,22 @@ export default new Vuex.Store({
       }
     },
     resetStore(state) {
+      state.lettersCount = 0;
       state.chainCount = 0;
       state.score = 0;
       state.successCount = 0;
       state.missCount = 0;
       state.maxChainCount = 0;
       state.missKeys = [];
+      // state.words = words
+      state.word = { letters: [], jp: "" };
+      // state.wordTime = WORD_TIME;
+      // state.wordTimer = null;
+      // state.playTime = PLAY_TIME;
+      // state.playTimer = null;
       // wordTime: WORD_TIME,
       // wordTimer: null,
-      // word: { letters: [], jp: "" },
+
       // playTime: PLAY_TIME,
       // playTimer: null
     }
