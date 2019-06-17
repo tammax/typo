@@ -1,15 +1,12 @@
-<template>
-  <div>
-    <v-progress-circular
+<template lang="pug">
+  div
+    v-progress-circular(
       :rotate="-90"
       :size="100"
       :width="15"
       :value="playTime"
       color="blue"
-    >
-      {{ playTime }}
-    </v-progress-circular>
-  </div>
+    ) {{ playTime }}
 </template>
 
 <script>

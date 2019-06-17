@@ -1,18 +1,11 @@
-<template>
-  <div id="word">
-    <span
+<template lang="pug">
+  div#word
+    span.letter(
       v-for="(letter, index) in letters"
       :key="index"
-      :class="{
-        current: isCurrent(index),
-        inputed: isInputed(index),
-        space: isSpace(letter)
-      }"
+      :class="{ current: isCurrent(index), inputed: isInputed(index), space: isSpace(letter) }"
       class="letter"
-    >
-      {{ letter | replaceSpace }}
-    </span>
-  </div>
+    ) {{ letter | replaceSpace }}
 </template>
 
 <script>

@@ -1,5 +1,5 @@
-<template>
-  <v-progress-linear v-model="wordTime"></v-progress-linear>
+<template lang="pug">
+  v-progress-linear(v-model="wordTime")
 </template>
 
 <script>

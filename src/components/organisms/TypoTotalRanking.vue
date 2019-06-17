@@ -1,7 +1,6 @@
 <template lang="pug">
-  <div>
+  div
     TypoRankingBox(:rankings="rankings")
-  </div>
 </template>
 
 <script>

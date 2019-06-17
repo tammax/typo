@@ -121,6 +121,19 @@ export default new Vuex.Store({
       } else {
         state.missKeys.push({ key: payload, count: 1 });
       }
+    },
+    resetStore(state) {
+      state.chainCount = 0;
+      state.score = 0;
+      state.successCount = 0;
+      state.missCount = 0;
+      state.maxChainCount = 0;
+      state.missKeys = [];
+      // wordTime: WORD_TIME,
+      // wordTimer: null,
+      // word: { letters: [], jp: "" },
+      // playTime: PLAY_TIME,
+      // playTimer: null
     }
   },
   actions: {
@@ -182,6 +195,9 @@ export default new Vuex.Store({
     },
     addMissKey({ commit }, key) {
       commit("addMissKey", key);
+    },
+    resetStore({ commit }) {
+      commit("resetStore");
     }
   }
 });

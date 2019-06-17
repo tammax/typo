@@ -1,9 +1,8 @@
-<template>
-  <div>
-    <TypoEnWord :letters="word.letters" />
-    <TypoJpWord :word="word.jp" />
-    <input v-if="isMobile" type="password" autofocus spellcheck="false" />
-  </div>
+<template lang="pug">
+  div
+    TypoEnWord(:letters="word.letters")
+    TypoJpWord(:word="word.jp")
+    input(v-if="isMobile" type="password" autofocus spellcheck="false")
 </template>
 
 <script>
@@ -27,6 +26,8 @@ export default {
     TypoJpWord
   },
   mounted() {
+    // storeデータのリセット
+    this.resetStore();
     window.addEventListener("keyup", this.typeLetters, true);
     window.addEventListener("click", this.focusTypingArea, true);
     window.addEventListener("touchstart", this.focusTypingArea, true);
@@ -42,7 +43,8 @@ export default {
       "incrementSuccessCount",
       "incrementMissCount",
       "nextWord",
-      "addMissKey"
+      "addMissKey",
+      "resetStore"
     ]),
     typeLetters({ key }) {
       let letters = this.word.letters;
@@ -80,7 +82,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 input {
   caret-color: transparent;
   outline: none;

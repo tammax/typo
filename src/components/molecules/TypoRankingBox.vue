@@ -1,59 +1,24 @@
-<template>
-  <v-layout row align-space-around>
-    <v-flex xs12 sm4 offset-sm4>
-      <v-card>
-        <v-list three-line>
-          <template v-for="(ranking, index) in rankings">
-            <v-list-tile :key="index">
-              <v-list-tile-action class="rank">
-                <v-icon v-if="index === 0" large class="crown" color="#DBB400">
-                  fa-crown
-                </v-icon>
-                <v-icon
-                  v-else-if="index === 1"
-                  large
-                  class="crown"
-                  color="#C9CACA"
-                >
-                  fa-crown
-                </v-icon>
-                <v-icon
-                  v-else-if="index === 2"
-                  large
-                  class="crown"
-                  color="#C47022"
-                >
-                  fa-crown
-                </v-icon>
-                <v-list-tile-action-text class="number">
-                  {{ index + 1 }}
-                </v-list-tile-action-text>
-              </v-list-tile-action>
-
-              <v-list-tile-content>
-                <v-list-tile-title class="score">
-                  {{ ranking.score }}
-                  <span>pt</span>
-                </v-list-tile-title>
-                <v-list-tile-sub-title class="chain-rate">
-                  <div>
-                    {{ ranking.maxChainCount }}
-                    <span>chain</span>
-                  </div>
-                  <div>
-                    {{ ranking.rate }}
-                    <span>%</span>
-                  </div>
-                </v-list-tile-sub-title>
-              </v-list-tile-content>
-            </v-list-tile>
-            <v-divider v-if="index + 1 < rankings.length" :key="index + 100">
-            </v-divider>
-          </template>
-        </v-list>
-      </v-card>
-    </v-flex>
-  </v-layout>
+<template lang="pug">
+  v-layout(row align-space-around)
+    v-flex(xs12 sm4 offset-sm4)
+      v-card
+        v-list(three-line)
+          template(v-for="(ranking, index) in rankings")
+            v-list-tile(:key="index")
+              v-list-tile-action.rank
+                v-icon.crown(v-if="index === 0" large color="#DBB400") fa-crown
+                v-icon.crown(v-else-if="index === 1" large color="#C9CACA") fa-crown
+                v-icon.crown(v-else-if="index === 2" large color="#C47022") fa-crown
+                v-list-tile-action-text.number {{ index + 1 }}
+              v-list-tile-content
+                v-list-tile-title.score {{ ranking.score }}
+                  span pt
+                v-list-tile-sub-title.chain-rate
+                  div {{ ranking.maxChainCount }}
+                    span chain
+                  div {{ ranking.rate }}
+                    span %
+            v-divider(v-if="index + 1 < rankings.length" :key="index + 100")
 </template>
 
 <script>

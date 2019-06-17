@@ -1,7 +1,6 @@
-<template>
-  <div>
-    <p>{{ word }}</p>
-  </div>
+<template lang="pug">
+  div
+    p {{ word }}
 </template>
 
 <script>

@@ -1,13 +1,9 @@
-<template>
-  <div id="row">
-    <div class="heading">Score</div>
-    <div class="value">{{ score | commaSeparate }}</div>
-    <transition v-on:after-enter="scoreBadge = false">
-      <div class="badge" v-show="scoreBadge">
-        +{{ addScore | commaSeparate }}
-      </div>
-    </transition>
-  </div>
+<template lang="pug">
+  div#row
+    div.heading Score
+    div.value {{ score | commaSeparate }}
+    transition(v-on:after-enter="scoreBadge = false")
+      div.badge(v-show="scoreBadge") +{{ addScore | commaSeparate }}
 </template>
 
 <script>

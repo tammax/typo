@@ -1,11 +1,9 @@
-<template>
-  <div id="row">
-    <div class="heading">Chain</div>
-    <div class="value">{{ chainCount }}</div>
-    <transition v-on:after-enter="chainBadge = false">
-      <div class="badge" v-show="chainBadge">+{{ addChain }}</div>
-    </transition>
-  </div>
+<template lang="pug">
+  div#row
+    div.heading Chain
+    div.value {{ chainCount }}
+    transition(v-on:after-enter="chainBadge = false")
+      div.badge(v-show="chainBadge") +{{ addChain }}
 </template>
 
 <script>
