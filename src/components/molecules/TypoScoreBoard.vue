@@ -7,14 +7,14 @@
             v-card-text
               TypoTimeGage
         v-flex(d-flex xs12 sm6 md3)
-          v-layout(v-layout)
+          v-layout(row wrap)
             v-flex(d-flex)
               v-layout(row wrap)
-                v-flex(d-flex xs12 align-self-center)
+                v-flex(d-flex xs6 align-self-center)
                   v-card
                     v-card-text
                       TypoScorePoint
-                v-flex(d-flex xs12 align-self-center)
+                v-flex(d-flex xs6 align-self-center)
                   v-card
                     v-card-text
                       TypoChainCount

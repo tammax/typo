@@ -1,9 +1,7 @@
 <template lang="pug">
-  <v-app dark>
-  <div id="app">
-    <router-view />
-  </div>
-  </v-app>
+  v-app(dark)
+    div#app
+      router-view
 </template>
 
 <style lang="scss">

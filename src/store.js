@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 const ADD_SCORE = 100;
 const WORD_TIME = 100;
-const PLAY_TIME = 20;
+const PLAY_TIME = 30;
 
 export default new Vuex.Store({
   state: {
