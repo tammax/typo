@@ -115,10 +115,6 @@ export default {
     ])
   },
   mounted() {
-    // window.removeEventListener("keyup", this.typeLetters, true);
-    // window.removeEventListener("click", this.focusTypingArea, true);
-    // window.removeEventListener("touchstart", this.focusTypingArea, true);
-    // window.removeEventListener("touchstart", this.focusTypingArea, true);
     //ゲーム結果の登録、総合順位の取得
     this.requestApi();
   },
@@ -216,9 +212,9 @@ h1 {
 
 .misskeys {
   p {
-    font-size: 15px !important;
+    font-size: 18px !important;
     span {
-      font-size: 10px;
+      font-size: 13px;
     }
   }
   .misskey {
@@ -226,7 +222,7 @@ h1 {
     left: 0;
     display: inline-block;
     text-align: left;
-    font-size: 15px;
+    font-size: 18px;
     padding-left: 25px;
     font-weight: bold;
     margin-bottom: 10px;

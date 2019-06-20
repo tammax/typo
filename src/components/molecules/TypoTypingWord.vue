@@ -25,7 +25,7 @@ export default {
     TypoEnWord,
     TypoJpWord
   },
-  beforeCreated() {
+  created() {
     // storeデータのリセット
     this.resetStore();
   },
