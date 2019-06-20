@@ -31,6 +31,7 @@ export default {
           //単語をリセット
           this.nextWord();
           this.resetWordTimer();
+          this.start();
         }
       }, 400);
       this.setWordTimer(timer);
