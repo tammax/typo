@@ -1,6 +1,11 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from "./views/Home.vue";
+
+// @ is an alias to /src
+import TypoStartView from "@/components/templates/TypoStartView.vue";
+import TypoTypingView from "@/components/templates/TypoTypingView.vue";
+import TypoRankingView from "@/components/templates/TypoRankingView.vue";
+import TypoResutlView from "@/components/templates/TypoResutlView.vue";
 
 Vue.use(Router);
 
@@ -8,17 +13,19 @@ export default new Router({
   routes: [
     {
       path: "/",
-      name: "home",
-      component: Home
+      component: TypoStartView
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/typing",
+      component: TypoTypingView
+    },
+    {
+      path: "/ranking",
+      component: TypoRankingView
+    },
+    {
+      path: "/result",
+      component: TypoResutlView
     }
   ]
 });

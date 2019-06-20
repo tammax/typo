@@ -19,3 +19,5 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
+.firebase/hosting.cHVibGlj.cache
+.firebase/hosting.ZGlzdA.cache
