@@ -1,84 +1,45 @@
-<template>
-  <div>
-    <h1>RESULT</h1>
-    <v-layout row>
-      <v-flex xs12 sm4 offset-sm4>
-        <v-card>
-          <v-list one-line>
-            <template>
-              <transition>
-                <div class="alert" v-if="this.rank > 0">
-                  Total Rank {{ rank }}
-                </div>
-              </transition>
-              <v-list-tile-action>
-                <span class="headname">Score</span>
-              </v-list-tile-action>
-              <v-list-tile>
-                <div class="headline">
-                  <p>
-                    {{ score | commaSeparate }}
-                    <span>pt</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-
-          <v-list one-line>
-            <template>
-              <v-list-tile-action>
-                <span class="headname">Max Chain</span>
-              </v-list-tile-action>
-              <v-list-tile>
-                <div class="headline">
-                  <p>
-                    {{ maxChainCount }}
-                    <span>cahin</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-
-          <v-list one-line>
-            <template>
-              <v-list-tile-action>
-                <span class="headname">Correct Rate</span>
-              </v-list-tile-action>
-              <v-list-tile>
-                <div class="headline">
-                  <p>
-                    {{ correctRate }}
-                    <span>%</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-
-          <v-list one-line>
-            <template>
-              <v-list-tile-action>
-                <span class="headname">Miss Keys</span>
-              </v-list-tile-action>
-              <v-list-tile v-for="(missKey, index) in missKeys" :key="index">
-                <div class="headline misskeys">
-                  <div class="misskey">{{ missKey.key }}</div>
-                  <p>
-                    {{ missKey.count }}
-                    <span>count</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-          <v-slide-y-transition></v-slide-y-transition>
-        </v-card>
-      </v-flex>
-    </v-layout>
-    <TypoTopButton />
-  </div>
+<template lang="pug">
+  div
+    h1 RESULT
+    v-layout(row)
+      v-flex(xs12 sm4 offset-sm4)
+        v-card
+          v-list(one-line)
+            template
+              transition
+                div.alert(v-if="this.rank > 0") Total Rank {{ rank }}
+              v-list-tile-action
+                span.headname Score
+              v-list-tile
+                div.headline
+                  p {{ score | commaSeparate }}
+                    span pt
+          v-list(one-line)
+            template
+              v-list-tile-action
+                span.headname Max Chain
+              v-list-tile
+                div.headline
+                  p {{ score | commaSeparate }}
+                    span pt
+          v-list(one-line)
+            template
+              v-list-tile-action
+                span.headname Correct Rate
+              v-list-tile
+                div.headline
+                  p {{ maxChainCount }}
+                    span %
+          v-list(one-line)
+            template
+              v-list-tile-action
+                span.headname Miss Keys
+              v-list-tile(v-for="(missKey, index) in missKeys" :key="index")
+                div.misskeys
+                  div.misskey {{ missKey.key }}
+                  p {{ missKey.count  }}
+                    span count
+    TypoTopButton
 </template>
 
 <script>
@@ -211,7 +172,9 @@ h1 {
 }
 
 .misskeys {
+  width: 100%;
   p {
+    text-align: right;
     font-size: 18px !important;
     span {
       font-size: 13px;
