@@ -36,7 +36,8 @@ export default {
     this.focusTypingArea();
     this.nextWord();
   },
-  beforeDestroy() {
+  destroyed() {
+    console.log("destroyed");
     window.removeEventListener("keyup", this.typeLetters, true);
     window.removeEventListener("click", this.focusTypingArea, true);
     window.removeEventListener("touchstart", this.focusTypingArea, true);
@@ -55,6 +56,7 @@ export default {
     ]),
     typeLetters({ key }) {
       let letters = this.word.letters;
+      console.log(letters);
       if (letters) {
         //表示された文字が入力した文字と正しいか判定
         let showLetter = letters[this.lettersCount].toUpperCase();

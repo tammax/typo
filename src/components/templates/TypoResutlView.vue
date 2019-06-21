@@ -6,51 +6,39 @@
         v-card
           v-list(one-line)
             template
-              transition
-                div.alert(v-if="this.rank > 0") Total Rank {{ rank }}
-              v-list-tile-action
-                span.headname Score
-              v-list-tile
-                div.headline
-                  p {{ score | commaSeparate }}
-                    span pt
+              TypoResultTotalRank(:rank="rank")
+              TypoResultScore(:score="score")
           v-list(one-line)
             template
-              v-list-tile-action
-                span.headname Max Chain
-              v-list-tile
-                div.headline
-                  p {{ score | commaSeparate }}
-                    span pt
+              TypoResultMaxChainCount(:maxChainCount="maxChainCount")
           v-list(one-line)
             template
-              v-list-tile-action
-                span.headname Correct Rate
-              v-list-tile
-                div.headline
-                  p {{ maxChainCount }}
-                    span %
+              TypoResultCorrectRate(:correctRate="correctRate")
           v-list(one-line)
             template
-              v-list-tile-action
-                span.headname Miss Keys
-              v-list-tile(v-for="(missKey, index) in missKeys" :key="index")
-                div.misskeys
-                  div.misskey {{ missKey.key }}
-                  p {{ missKey.count  }}
-                    span count
+              TypoResultMissKeys(:missKeys="missKeys")
     TypoTopButton
 </template>
 
 <script>
 import { mapState } from "vuex";
 import { db } from "@/config/firebase";
+import TypoResultMissKeys from "@/components/molecules/TypoResultMissKeys.vue";
+import TypoResultTotalRank from "@/components/atoms/TypoResultTotalRank.vue";
+import TypoResultScore from "@/components/atoms/TypoResultScore.vue";
+import TypoResultMaxChainCount from "@/components/atoms/TypoResultMaxChainCount.vue";
+import TypoResultCorrectRate from "@/components/atoms/TypoResultCorrectRate.vue";
 import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
 import _ from "lodash";
 
 export default {
   name: "TypoResutlView",
   components: {
+    TypoResultMissKeys,
+    TypoResultTotalRank,
+    TypoResultScore,
+    TypoResultMaxChainCount,
+    TypoResultCorrectRate,
     TypoTopButton
   },
   data() {
@@ -79,18 +67,12 @@ export default {
     //ゲーム結果の登録、総合順位の取得
     this.requestApi();
   },
-  filters: {
-    commaSeparate(num) {
-      return num.toLocaleString();
-    }
-  },
   methods: {
     async requestApi() {
       let id = await this.registerScore();
       let rank = await this.getRank(id);
       this.rank = rank;
     },
-
     registerScore() {
       return new Promise(resolve => {
         db.collection("playResults")
@@ -112,7 +94,6 @@ export default {
         // });
       });
     },
-
     getRank(id) {
       return new Promise(resolve => {
         db.collection("playResults")
@@ -129,6 +110,7 @@ export default {
               rankings.push(ranking);
             });
             let rank = _.findIndex(rankings, ["id", id]) + 1;
+            console.log(rank);
             resolve(rank);
           });
         // .catch(function(error) {
@@ -143,53 +125,6 @@ export default {
 <style lang="scss" scoped>
 h1 {
   color: #ffffff;
-}
-
-.alert {
-  font-size: 22px;
-  padding: 10px 0 35px 0;
-  color: #ff6200;
-  font-weight: bold;
-}
-
-.headname {
-  padding: 0 10px;
-  font-weight: bold;
-  font-size: 15px;
-  color: #ff6200;
-}
-
-.headline {
-  width: 100%;
-
-  p {
-    text-align: right;
-
-    span {
-      font-size: 15px;
-    }
-  }
-}
-
-.misskeys {
-  width: 100%;
-  p {
-    text-align: right;
-    font-size: 18px !important;
-    span {
-      font-size: 13px;
-    }
-  }
-  .misskey {
-    position: absolute;
-    left: 0;
-    display: inline-block;
-    text-align: left;
-    font-size: 18px;
-    padding-left: 25px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
 }
 
 .v-enter-active,

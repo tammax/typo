@@ -69,6 +69,12 @@ export default new Vuex.Store({
     incrementMissCount(state) {
       state.missCount++;
     },
+    resetSuccessCount(state) {
+      state.successCount = 0;
+    },
+    resetMissCount(state) {
+      state.missCount = 0;
+    },
     resetLettersCount(state) {
       state.lettersCount = 0;
     },
@@ -135,13 +141,8 @@ export default new Vuex.Store({
       state.word = { letters: [], jp: "" };
       // state.wordTime = WORD_TIME;
       // state.wordTimer = null;
-      // state.playTime = PLAY_TIME;
-      // state.playTimer = null;
       // wordTime: WORD_TIME,
       // wordTimer: null,
-
-      // playTime: PLAY_TIME,
-      // playTimer: null
     }
   },
   actions: {
@@ -157,6 +158,12 @@ export default new Vuex.Store({
     incrementMissCount({ commit }) {
       commit("incrementMissCount");
     },
+    resetSuccessCount({ commit }) {
+      commit("resetSuccessCount");
+    },
+    resetMissCount({ commit }) {
+      commit("resetMissCount");
+    },
     resetLettersCount({ commit }) {
       commit("resetLettersCount");
     },
@@ -167,10 +174,12 @@ export default new Vuex.Store({
       commit("resetChainCount");
     },
     calculateAddScore({ commit }, { chainCount, length }) {
-      let addScore = ADD_SCORE * length + length * 10;
+      let addScore = ADD_SCORE * length + length * 30;
       if (chainCount > 100) {
         addScore = addScore * 1.5;
       } else if (chainCount > 50) {
+        addScore = addScore * 1.3;
+      } else if (chainCount > 30) {
         addScore = addScore * 1.2;
       } else if (chainCount > 10) {
         addScore = addScore * 1.1;
