@@ -7,7 +7,7 @@ Vue.use(Vuex);
 
 const ADD_SCORE = 100;
 const WORD_TIME = 100;
-const PLAY_TIME = 30;
+//const PLAY_TIME = 30;
 
 export default new Vuex.Store({
   state: {
@@ -20,9 +20,9 @@ export default new Vuex.Store({
     missKeys: [],
     wordTime: WORD_TIME,
     wordTimer: null,
-    word: { letters: [], jp: "" },
-    playTime: PLAY_TIME,
-    playTimer: null
+    word: { letters: [], jp: "" }
+    // playTime: PLAY_TIME,
+    // playTimer: null
   },
   getters: {
     lettersCount(state) {
@@ -43,12 +43,12 @@ export default new Vuex.Store({
     missKeys(state) {
       return state.missKeys;
     },
-    playTime(state) {
-      return state.playTime;
-    },
-    palyTimer(state) {
-      return state.palyTimer;
-    },
+    // playTime(state) {
+    //   return state.playTime;
+    // },
+    // palyTimer(state) {
+    //   return state.palyTimer;
+    // },
     wordTime(state) {
       return state.wordTime;
     },
@@ -95,26 +95,23 @@ export default new Vuex.Store({
       state.wordTimer = null;
       state.wordTime = WORD_TIME;
     },
-    subtractPlayTime(state, payload) {
-      state.playTime -= payload;
-    },
-    setPlayTimer(state, payload) {
-      state.playTimer = payload;
-    },
-    resetPlayTimer(state) {
-      clearInterval(state.playTimer);
-      state.playTimer = null;
-      state.playTime = PLAY_TIME;
-    },
+    // subtractPlayTime(state, payload) {
+    //   state.playTime -= payload;
+    // },
+    // setPlayTimer(state, payload) {
+    //   state.playTimer = payload;
+    // },
+    // resetPlayTimer(state) {
+    //   clearInterval(state.playTimer);
+    //   state.playTimer = null;
+    //   state.playTime = PLAY_TIME;
+    // },
     setWord(state, payload) {
       state.word = payload;
     },
     nextWord(state) {
       //Deepコピーした方がいいかも
       state.word = _.sample(words);
-      // console.log("--------");
-      // console.log(state.word);
-      // console.log("/--------");
       state.lettersCount = 0;
       state.wordTime = WORD_TIME;
     },
@@ -195,15 +192,15 @@ export default new Vuex.Store({
     nextWord({ commit }) {
       commit("nextWord");
     },
-    subtractPlayTime({ commit }, subtractTime) {
-      commit("subtractPlayTime", subtractTime);
-    },
-    setPlayTimer({ commit }, timer) {
-      commit("setPlayTimer", timer);
-    },
-    resetPlayTimer({ commit }) {
-      commit("resetPlayTimer");
-    },
+    // subtractPlayTime({ commit }, subtractTime) {
+    //   commit("subtractPlayTime", subtractTime);
+    // },
+    // setPlayTimer({ commit }, timer) {
+    //   commit("setPlayTimer", timer);
+    // },
+    // resetPlayTimer({ commit }) {
+    //   commit("resetPlayTimer");
+    // },
     addMissKey({ commit }, key) {
       commit("addMissKey", key);
     },
