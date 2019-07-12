@@ -10,7 +10,7 @@
 
 <script>
 export default {
-  name: "TypoResultMaxChainCount",
+  name: "TypoResultMaxChain",
   props: {
     maxChainCount: Number
   }

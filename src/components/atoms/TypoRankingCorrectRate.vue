@@ -1,33 +1,32 @@
 <template lang="pug">
-  v-list-tile-title.score
-    span Score
-    | {{ score }}
-    span pt
+  v-list-tile-sub-title.rate
+    span Correct Rate
+    | {{ rate }}
+    span %
 </template>
 
 <script>
 export default {
-  name: "TypoRankingScore",
+  name: "TypoRankingCorrectRate",
   props: {
-    score: Number
+    rate: Number
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.score {
+.rate {
   overflow: visible;
   position: relative;
-  height: 100%;
-  line-height: 30px;
-  font-size: 30px;
-  padding: 8px 0;
-  display: block;
+  width: 100%;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 5px 0px;
   text-align: center;
 
   span {
     position: absolute;
-    font-size: 15px;
+    font-size: 10px;
   }
 
   span:first-child {

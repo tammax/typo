@@ -10,7 +10,7 @@
               TypoResultScore(:score="score")
           v-list(one-line)
             template
-              TypoResultMaxChainCount(:maxChainCount="maxChainCount")
+              TypoResultMaxChain(:maxChainCount="maxChainCount")
           v-list(one-line)
             template
               TypoResultCorrectRate(:correctRate="correctRate")
@@ -26,7 +26,7 @@ import { db } from "@/config/firebase";
 import TypoResultMissKeys from "@/components/molecules/TypoResultMissKeys.vue";
 import TypoResultTotalRank from "@/components/atoms/TypoResultTotalRank.vue";
 import TypoResultScore from "@/components/atoms/TypoResultScore.vue";
-import TypoResultMaxChainCount from "@/components/atoms/TypoResultMaxChainCount.vue";
+import TypoResultMaxChain from "@/components/atoms/TypoResultMaxChain.vue";
 import TypoResultCorrectRate from "@/components/atoms/TypoResultCorrectRate.vue";
 import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
 import _ from "lodash";
@@ -37,7 +37,7 @@ export default {
     TypoResultMissKeys,
     TypoResultTotalRank,
     TypoResultScore,
-    TypoResultMaxChainCount,
+    TypoResultMaxChain,
     TypoResultCorrectRate,
     TypoTopButton
   },

@@ -1,33 +1,33 @@
 <template lang="pug">
-  v-list-tile-title.score
-    span Score
-    | {{ score }}
-    span pt
+  v-list-tile-sub-title.chain
+    span Max Chain
+    | {{ maxChain }}
+    span chain
 </template>
 
 <script>
 export default {
-  name: "TypoRankingScore",
+  name: "TypoRankingMaxChain",
   props: {
-    score: Number
+    maxChain: Number
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.score {
+.chain {
   overflow: visible;
   position: relative;
-  height: 100%;
-  line-height: 30px;
-  font-size: 30px;
-  padding: 8px 0;
+  width: 100%;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 5px 0px;
   display: block;
   text-align: center;
 
   span {
     position: absolute;
-    font-size: 15px;
+    font-size: 10px;
   }
 
   span:first-child {

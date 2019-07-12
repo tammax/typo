@@ -3,6 +3,9 @@ import Vuex from "vuex";
 import _ from "lodash";
 import words from "@/assets/words.json";
 
+// localStorage
+import createPersistedState from "vuex-persistedstate";
+
 Vue.use(Vuex);
 
 const ADD_SCORE = 100;
@@ -20,9 +23,8 @@ export default new Vuex.Store({
     missKeys: [],
     wordTime: WORD_TIME,
     wordTimer: null,
-    word: { letters: [], jp: "" }
-    // playTime: PLAY_TIME,
-    // playTimer: null
+    word: { letters: [], jp: "" },
+    theme: "dark"
   },
   getters: {
     lettersCount(state) {
@@ -57,6 +59,9 @@ export default new Vuex.Store({
     },
     word(state) {
       return state.word;
+    },
+    theme(state) {
+      return state.theme;
     }
   },
   mutations: {
@@ -143,6 +148,10 @@ export default new Vuex.Store({
       // state.wordTimer = null;
       // wordTime: WORD_TIME,
       // wordTimer: null,
+    },
+    setTheme(state, payload) {
+      // state.theme = payload;
+      localStorage.theme = payload;
     }
   },
   actions: {
@@ -215,6 +224,9 @@ export default new Vuex.Store({
     },
     resetStore({ commit }) {
       commit("resetStore");
+    },
+    setTheme({ commit }, theme) {
+      commit("setTheme", theme);
     }
   }
 });

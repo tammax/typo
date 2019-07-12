@@ -2,7 +2,7 @@
   div#menu
     TypoStartButton
     TypoRankingButton
-    TypoRecordButton
+    //- TypoRecordButton
     TypoTrainingButton
     TypoSettingButton
 </template>
@@ -10,7 +10,7 @@
 <script>
 import TypoStartButton from "@/components/atoms/TypoStartButton.vue";
 import TypoRankingButton from "@/components/atoms/TypoRankingButton.vue";
-import TypoRecordButton from "@/components/atoms/TypoRecordButton.vue";
+// import TypoRecordButton from "@/components/atoms/TypoRecordButton.vue";
 import TypoTrainingButton from "@/components/atoms/TypoTrainingButton.vue";
 import TypoSettingButton from "@/components/atoms/TypoSettingButton.vue";
 
@@ -19,7 +19,7 @@ export default {
   components: {
     TypoStartButton,
     TypoRankingButton,
-    TypoRecordButton,
+    // TypoRecordButton,
     TypoTrainingButton,
     TypoSettingButton
   }

@@ -8,23 +8,24 @@
               TypoRankingRank(:index="index")
               v-list-tile-content
                 TypoRankingScore(:score="ranking.score")
-                v-list-tile-sub-title.chain-rate
-                  div {{ ranking.maxChainCount }}
-                    span chain
-                  div {{ ranking.rate }}
-                    span %
+                TypoRankingMaxChain(:maxChain="ranking.maxChainCount")
+                TypoRankingCorrectRate(:rate="ranking.rate")
             v-divider(v-if="index + 1 < rankings.length" :key="index + 100")
 </template>
 
 <script>
 import TypoRankingRank from "@/components/atoms/TypoRankingRank.vue";
 import TypoRankingScore from "@/components/atoms/TypoRankingScore.vue";
+import TypoRankingMaxChain from "@/components/atoms/TypoRankingMaxChain.vue";
+import TypoRankingCorrectRate from "@/components/atoms/TypoRankingCorrectRate.vue";
 
 export default {
   name: "TypoRankingBox",
   components: {
     TypoRankingRank,
-    TypoRankingScore
+    TypoRankingScore,
+    TypoRankingMaxChain,
+    TypoRankingCorrectRate
   },
   props: {
     rankings: {
@@ -34,23 +35,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.v-list__tile {
-  .chain-rate {
-    font-size: 15px;
-    text-align: center;
-    display: block;
-    padding-top: 10px;
-
-    div {
-      display: inline-block;
-      padding: 0 8px;
-
-      span {
-        font-size: 11px;
-        padding: 2px;
-      }
-    }
-  }
-}
-</style>
+<style lang="scss" scoped></style>

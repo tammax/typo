@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-btn(flat large disabled) Setting
+  v-btn(flat to="/setting" large) Setting
 </template>
 
 <script>
