@@ -18,7 +18,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["score"])
+    ...mapState("play", ["score"])
   },
   watch: {
     score(after, before) {

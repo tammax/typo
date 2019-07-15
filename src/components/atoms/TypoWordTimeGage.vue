@@ -8,7 +8,7 @@ import { mapState, mapActions } from "vuex";
 export default {
   name: "TypoWordTimeGage",
   computed: {
-    ...mapState(["wordTime"])
+    ...mapState("play", ["wordTime"])
   },
   mounted() {
     this.start();
@@ -17,7 +17,7 @@ export default {
     this.resetWordTimer();
   },
   methods: {
-    ...mapActions([
+    ...mapActions("play", [
       "subtractWordTime",
       "nextWord",
       "setWordTimer",

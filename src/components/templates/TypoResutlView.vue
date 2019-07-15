@@ -54,7 +54,7 @@ export default {
       }
       return Math.round((this.successCount / totalCount) * 1000) / 10;
     },
-    ...mapState([
+    ...mapState("play", [
       "score",
       "chainCount",
       "successCount",

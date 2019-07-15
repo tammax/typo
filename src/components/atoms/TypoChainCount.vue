@@ -21,7 +21,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["chainCount"])
+    ...mapState("play", ["chainCount"])
   },
   watch: {
     chainCount(after, before) {

@@ -2,33 +2,35 @@
   v-container(fluid)
     v-layout(row wrap align-center)
       v-flex(xs6)
-        v-subheader Theme
+        v-subheader Dark Mode
       v-flex(xs6)
-        v-select(v-model="select" :items="items" item-text="state" item-value="code" label="Select" persistent-hint return-object single-line @change="setTheme(select)")
+        v-switch(v-model="isDarkMode")
 </template>
 
 <script>
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "TypoSettingTheme",
+  computed: {
+    ...mapState("setting", ["mode"])
+  },
   data() {
     return {
-      select: { state: "dark", code: "dark" },
-      items: [
-        { state: "dark", code: "dark" },
-        { state: "light", code: "light" }
-      ]
+      isDarkMode: true
     };
   },
   created() {
-    // let code = localStorage.getItem("theme");
-    // this.select.code = code;
-    // this.select.state = code;
+    // Modeが今後増える可能性があるので、FlgではなくCodeとして管理しておく
+    this.isDarkMode = this.mode === "dark";
+    this.$watch("isDarkMode", function(newVal) {
+      console.log("watch");
+      let mode = newVal ? "dark" : "light";
+      this.setMode(mode);
+    });
   },
   methods: {
-    setTheme({ code }) {
-      localStorage.setItem("theme", code);
-    }
+    ...mapActions("setting", ["setMode"])
   }
 };
 </script>

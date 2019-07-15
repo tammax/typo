@@ -1,18 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
 import _ from "lodash";
 import words from "@/assets/words.json";
 
-// localStorage
-import createPersistedState from "vuex-persistedstate";
-
-Vue.use(Vuex);
-
 const ADD_SCORE = 100;
 const WORD_TIME = 100;
-//const PLAY_TIME = 30;
 
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state: {
     lettersCount: 0,
     chainCount: 0,
@@ -24,7 +17,6 @@ export default new Vuex.Store({
     wordTime: WORD_TIME,
     wordTimer: null,
     word: { letters: [], jp: "" },
-    theme: "dark"
   },
   getters: {
     lettersCount(state) {
@@ -45,12 +37,6 @@ export default new Vuex.Store({
     missKeys(state) {
       return state.missKeys;
     },
-    // playTime(state) {
-    //   return state.playTime;
-    // },
-    // palyTimer(state) {
-    //   return state.palyTimer;
-    // },
     wordTime(state) {
       return state.wordTime;
     },
@@ -59,9 +45,6 @@ export default new Vuex.Store({
     },
     word(state) {
       return state.word;
-    },
-    theme(state) {
-      return state.theme;
     }
   },
   mutations: {
@@ -106,17 +89,6 @@ export default new Vuex.Store({
       state.wordTimer = null;
       state.wordTime = WORD_TIME;
     },
-    // subtractPlayTime(state, payload) {
-    //   state.playTime -= payload;
-    // },
-    // setPlayTimer(state, payload) {
-    //   state.playTimer = payload;
-    // },
-    // resetPlayTimer(state) {
-    //   clearInterval(state.playTimer);
-    //   state.playTimer = null;
-    //   state.playTime = PLAY_TIME;
-    // },
     setWord(state, payload) {
       state.word = payload;
     },
@@ -142,16 +114,7 @@ export default new Vuex.Store({
       state.missCount = 0;
       state.maxChainCount = 0;
       state.missKeys = [];
-      // state.words = words
       state.word = { letters: [], jp: "" };
-      // state.wordTime = WORD_TIME;
-      // state.wordTimer = null;
-      // wordTime: WORD_TIME,
-      // wordTimer: null,
-    },
-    setTheme(state, payload) {
-      // state.theme = payload;
-      localStorage.theme = payload;
     }
   },
   actions: {
@@ -210,23 +173,11 @@ export default new Vuex.Store({
     nextWord({ commit }) {
       commit("nextWord");
     },
-    // subtractPlayTime({ commit }, subtractTime) {
-    //   commit("subtractPlayTime", subtractTime);
-    // },
-    // setPlayTimer({ commit }, timer) {
-    //   commit("setPlayTimer", timer);
-    // },
-    // resetPlayTimer({ commit }) {
-    //   commit("resetPlayTimer");
-    // },
     addMissKey({ commit }, key) {
       commit("addMissKey", key);
     },
     resetStore({ commit }) {
       commit("resetStore");
-    },
-    setTheme({ commit }, theme) {
-      commit("setTheme", theme);
     }
   }
-});
+}

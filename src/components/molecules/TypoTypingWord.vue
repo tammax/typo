@@ -19,12 +19,12 @@ export default {
       isMobile: isMobile.any,
       sounds: [
         "http://localhost:8080/key01.mp3",
-        "http://localhost:8080/key02.mp3",
+        "http://localhost:8080/key02.mp3"
       ]
     };
   },
   computed: {
-    ...mapState(["word", "lettersCount", "chainCount"])
+    ...mapState("play", ["word", "lettersCount", "chainCount"])
   },
   components: {
     TypoEnWord,
@@ -36,7 +36,7 @@ export default {
   },
   mounted() {
     window.addEventListener("keyup", this.typeLetters, true);
-//    window.addEventListener("keyup", this.beatKeyboardSound, true);
+    //    window.addEventListener("keyup", this.beatKeyboardSound, true);
     window.addEventListener("click", this.focusTypingArea, true);
     window.addEventListener("touchstart", this.focusTypingArea, true);
     this.focusTypingArea();
@@ -45,16 +45,14 @@ export default {
   destroyed() {
     console.log("destroyed");
     window.removeEventListener("keyup", this.typeLetters, true);
-//    window.removeEventListener("keyup", this.beatKeyboardSound, true);
+    //    window.removeEventListener("keyup", this.beatKeyboardSound, true);
     window.removeEventListener("click", this.focusTypingArea, true);
     window.removeEventListener("touchstart", this.focusTypingArea, true);
   },
   methods: {
     hoge() {
       const sound1 = new Howl({
-        src: [
-          "http://localhost:8080/key01.mp3",
-        ]
+        src: ["http://localhost:8080/key01.mp3"]
       });
 
       sound1.play();
@@ -64,9 +62,7 @@ export default {
     },
     hoge2() {
       const sound2 = new Howl({
-        src: [
-          "http://localhost:8080/key02.mp3"
-        ]
+        src: ["http://localhost:8080/key02.mp3"]
       });
 
       sound2.play();
@@ -77,9 +73,7 @@ export default {
     },
     hoge3() {
       const sound3 = new Howl({
-        src: [
-          "http://localhost:8080/key05.mp3"
-        ]
+        src: ["http://localhost:8080/key05.mp3"]
       });
 
       sound3.play();
@@ -88,7 +82,7 @@ export default {
       Howler.volume(999);
       console.log("hogehohgoe3");
     },
-    ...mapActions([
+    ...mapActions("play", [
       "incrementLettersCount",
       "addChainCount",
       "resetChainCount",
