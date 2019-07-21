@@ -4,8 +4,7 @@
       v-flex(xs6)
         v-subheader Sound
       v-flex(xs6)
-        //- v-switch(v-model="switch1" :label="`Switch 1: ${switch1.toString()}`")
-        v-switch(v-model="switch1")
+        v-switch(v-model="switch1" ripple)
 </template>
 
 <script>

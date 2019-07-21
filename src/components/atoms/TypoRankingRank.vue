@@ -32,8 +32,11 @@ export default {
     z-index: 1;
     margin: 0 auto;
     color: #ffffff;
-    text-shadow: 2px 2px 1px #2c3e50, -2px 2px 1px #2c3e50, 2px -2px 1px #2c3e50,
-      -2px -2px 1px #2c3e50;
+    text-shadow: #2c3e50 2px 0px, #2c3e50 -2px 0px, #2c3e50 0px -2px,
+      #2c3e50 0px 2px, #2c3e50 2px 2px, #2c3e50 -2px 2px, #2c3e50 2px -2px,
+      #2c3e50 -2px -2px, #2c3e50 1px 2px, #2c3e50 -1px 2px, #2c3e50 1px -2px,
+      #2c3e50 -1px -2px, #2c3e50 2px 1px, #2c3e50 -2px 1px, #2c3e50 2px -1px,
+      #2c3e50 -2px -1px;
   }
 }
 </style>

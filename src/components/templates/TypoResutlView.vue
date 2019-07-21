@@ -1,6 +1,6 @@
 <template lang="pug">
   div
-    h1 RESULT
+    TypoHeading Result
     v-layout(row)
       v-flex(xs12 sm4 offset-sm4)
         v-card
@@ -23,6 +23,7 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/config/firebase";
+import TypoHeading from "@/components/atoms/TypoHeading.vue";
 import TypoResultMissKeys from "@/components/molecules/TypoResultMissKeys.vue";
 import TypoResultTotalRank from "@/components/atoms/TypoResultTotalRank.vue";
 import TypoResultScore from "@/components/atoms/TypoResultScore.vue";
@@ -34,6 +35,7 @@ import _ from "lodash";
 export default {
   name: "TypoResutlView",
   components: {
+    TypoHeading,
     TypoResultMissKeys,
     TypoResultTotalRank,
     TypoResultScore,

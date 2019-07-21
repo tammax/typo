@@ -16,11 +16,7 @@ export default {
   name: "TypoTypingWord",
   data: () => {
     return {
-      isMobile: isMobile.any,
-      sounds: [
-        "http://localhost:8080/key01.mp3",
-        "http://localhost:8080/key02.mp3"
-      ]
+      isMobile: isMobile.any
     };
   },
   computed: {
@@ -50,37 +46,39 @@ export default {
     window.removeEventListener("touchstart", this.focusTypingArea, true);
   },
   methods: {
-    hoge() {
-      const sound1 = new Howl({
-        src: ["http://localhost:8080/key01.mp3"]
+    beatSuccess() {
+      const sound = new Howl({
+        src: [
+          "https://firebasestorage.googleapis.com/v0/b/typo-60d72.appspot.com/o/sound%2Fkey0101.mp3?alt=media&token=1a4d6b8f-f394-46d2-8036-6eea21b5a36d"
+        ]
       });
 
-      sound1.play();
+      sound.play();
       // Change global volume.
       Howler.volume(999);
-      console.log("hogehohgoe1");
     },
-    hoge2() {
-      const sound2 = new Howl({
-        src: ["http://localhost:8080/key02.mp3"]
+    beatFinish() {
+      const sound = new Howl({
+        src: [
+          "https://firebasestorage.googleapis.com/v0/b/typo-60d72.appspot.com/o/sound%2Fkey0102.mp3?alt=media&token=1ef74912-0990-49e1-b052-74ea1442a37c"
+        ]
       });
 
-      sound2.play();
+      sound.play();
 
       // Change global volume.
       Howler.volume(999);
-      console.log("hogehohgoe2");
     },
-    hoge3() {
-      const sound3 = new Howl({
-        src: ["http://localhost:8080/key05.mp3"]
+    beatMiss() {
+      const sound = new Howl({
+        src: [
+          "https://firebasestorage.googleapis.com/v0/b/typo-60d72.appspot.com/o/sound%2Fkey0103.mp3?alt=media&token=657e7d1d-c89d-49a1-80ab-c38687a8e241"
+        ]
       });
 
-      sound3.play();
-
+      sound.play();
       // Change global volume.
       Howler.volume(999);
-      console.log("hogehohgoe3");
     },
     ...mapActions("play", [
       "incrementLettersCount",
@@ -100,12 +98,12 @@ export default {
         //表示された文字が入力した文字と正しいか判定
         let showLetter = letters[this.lettersCount].toUpperCase();
         if (showLetter == key.toUpperCase()) {
-          this.hoge();
+          this.beatSuccess();
           this.incrementLettersCount();
           // this.calculateAddScore(this.chainCount);
           this.incrementSuccessCount();
           if (this.lettersCount === letters.length) {
-            this.hoge2();
+            this.beatFinish();
             this.addChainCount(letters.length);
             this.calculateAddScore({
               chainCount: this.chainCount,
@@ -115,7 +113,7 @@ export default {
           }
         } else {
           if (key !== "Shift") {
-            this.hoge3();
+            this.beatMiss();
             this.incrementMissCount();
             this.addMissKey(showLetter);
             this.resetChainCount();

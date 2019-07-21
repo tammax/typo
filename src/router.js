@@ -5,7 +5,6 @@ import Router from "vue-router";
 import TypoStartView from "@/components/templates/TypoStartView.vue";
 import TypoTypingView from "@/components/templates/TypoTypingView.vue";
 import TypoRankingView from "@/components/templates/TypoRankingView.vue";
-import TypoRecordView from "@/components/templates/TypoRecordView.vue";
 import TypoResutlView from "@/components/templates/TypoResutlView.vue";
 import TypoSettingView from "@/components/templates/TypoSettingView.vue";
 
@@ -24,10 +23,6 @@ export default new Router({
     {
       path: "/ranking",
       component: TypoRankingView
-    },
-    {
-      path: "/record",
-      component: TypoRecordView
     },
     {
       path: "/result",
