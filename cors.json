@@ -1,5 +1,5 @@
 [{
-  "origin": ["https://typo-60d72.web.app", "http://localhost:8080"],
+  "origin": ["https://typo-60d72.web.app", "https://typo-60d72.firebaseapp.com", "http://localhost:8080"],
   "responseHeader": ["*"],
   "method": ["GET"],
   "maxAgeSeconds": 86400

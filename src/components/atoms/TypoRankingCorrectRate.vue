@@ -22,6 +22,7 @@ export default {
   font-size: 20px;
   line-height: 20px;
   padding: 5px 0px;
+  display: block;
   text-align: center;
 
   span {

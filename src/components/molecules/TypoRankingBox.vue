@@ -3,14 +3,14 @@
     v-flex(xs12 sm4 offset-sm4)
       v-card
         v-list(three-line)
-          template(v-for="(ranking, index) in rankings")
-            v-list-tile(:key="index")
-              TypoRankingRank(:index="index")
-              v-list-tile-content
-                TypoRankingScore(:score="ranking.score")
-                TypoRankingMaxChain(:maxChain="ranking.maxChainCount")
-                TypoRankingCorrectRate(:rate="ranking.rate")
-            v-divider(v-if="index + 1 < rankings.length" :key="index + 100")
+            template(v-for="(ranking, index) in rankings")
+                v-list-tile(:key="index").box
+                  TypoRankingRank(:index="index")
+                  v-list-tile-content
+                    TypoRankingScore(:score="ranking.score")
+                    TypoRankingMaxChain(:maxChain="ranking.maxChainCount")
+                    TypoRankingCorrectRate(:rate="ranking.rate")
+                v-divider(v-if="index + 1 < rankings.length" :key="index + 100")
 </template>
 
 <script>
@@ -35,4 +35,8 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.box {
+  padding: 10px;
+}
+</style>

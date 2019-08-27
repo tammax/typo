@@ -24,7 +24,6 @@ export default {
     // Modeが今後増える可能性があるので、FlgではなくCodeとして管理しておく
     this.isDarkMode = this.mode === "dark";
     this.$watch("isDarkMode", function(newVal) {
-      console.log("watch");
       let mode = newVal ? "dark" : "light";
       this.setMode(mode);
     });

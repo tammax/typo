@@ -4,18 +4,30 @@
       v-flex(xs6)
         v-subheader Sound
       v-flex(xs6)
-        v-switch(v-model="switch1" ripple)
+        v-switch(v-model="useSound")
 </template>
 
 <script>
-//import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "TypoSettingSound",
   data() {
     return {
-      switch1: true
+      useSound: true
     };
+  },
+  computed: {
+    ...mapState("setting", ["soundFlg"])
+  },
+  created() {
+    this.useSound = this.soundFlg;
+    this.$watch("useSound", function(newVal) {
+      this.setSoundFlg(newVal);
+    });
+  },
+  methods: {
+    ...mapActions("setting", ["setSoundFlg"])
   }
 };
 </script>

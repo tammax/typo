@@ -1,8 +1,8 @@
 import _ from "lodash";
 import words from "@/assets/words.json";
 
-const ADD_SCORE = 100;
-const WORD_TIME = 100;
+const ADD_SCORE = 18000;
+const WORD_TIME = 30;
 
 export default {
   namespaced: true,

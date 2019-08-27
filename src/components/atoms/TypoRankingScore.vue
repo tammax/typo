@@ -19,8 +19,8 @@ export default {
   overflow: visible;
   position: relative;
   height: 100%;
-  line-height: 30px;
-  font-size: 30px;
+  line-height: 26px;
+  font-size: 26px;
   padding: 8px 0;
   display: block;
   text-align: center;

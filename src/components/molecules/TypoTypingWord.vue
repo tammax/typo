@@ -20,7 +20,8 @@ export default {
     };
   },
   computed: {
-    ...mapState("play", ["word", "lettersCount", "chainCount"])
+    ...mapState("play", ["word", "lettersCount", "chainCount"]),
+    ...mapState("setting", ["soundFlg"])
   },
   components: {
     TypoEnWord,
@@ -39,7 +40,6 @@ export default {
     this.nextWord();
   },
   destroyed() {
-    console.log("destroyed");
     window.removeEventListener("keyup", this.typeLetters, true);
     //    window.removeEventListener("keyup", this.beatKeyboardSound, true);
     window.removeEventListener("click", this.focusTypingArea, true);
@@ -93,17 +93,21 @@ export default {
     ]),
     typeLetters({ key }) {
       let letters = this.word.letters;
-      console.log(letters);
+      // console.log(letters);
       if (letters) {
         //表示された文字が入力した文字と正しいか判定
         let showLetter = letters[this.lettersCount].toUpperCase();
         if (showLetter == key.toUpperCase()) {
-          this.beatSuccess();
+          if (this.soundFlg) {
+            this.beatSuccess();
+          }
           this.incrementLettersCount();
           // this.calculateAddScore(this.chainCount);
           this.incrementSuccessCount();
           if (this.lettersCount === letters.length) {
-            this.beatFinish();
+            if (this.soundFlg) {
+              this.beatFinish();
+            }
             this.addChainCount(letters.length);
             this.calculateAddScore({
               chainCount: this.chainCount,
@@ -113,7 +117,9 @@ export default {
           }
         } else {
           if (key !== "Shift") {
-            this.beatMiss();
+            if (this.soundFlg) {
+              this.beatMiss();
+            }
             this.incrementMissCount();
             this.addMissKey(showLetter);
             this.resetChainCount();
