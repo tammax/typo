@@ -52,7 +52,6 @@ export default {
           "https://firebasestorage.googleapis.com/v0/b/typo-60d72.appspot.com/o/sound%2Fkey0101.mp3?alt=media&token=1a4d6b8f-f394-46d2-8036-6eea21b5a36d"
         ]
       });
-
       sound.play();
       // Change global volume.
       Howler.volume(999);

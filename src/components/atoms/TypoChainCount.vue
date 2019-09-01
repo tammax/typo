@@ -2,13 +2,16 @@
   div#row
     div.heading Chain
     div.value {{ chainCount }}
-    transition(v-on:after-enter="chainPlusBadge = false")
-      div.badge(v-show="chainPlusBadge") +{{ addChain }}
-    transition(v-on:after-enter="chainMinusBadge = false")
-      div.badge(v-show="chainMinusBadge") {{ addChain }}
+    transition(v-on:after-enter="currentState = ''")
+      div(v-show="currentState")
+        div.badge.plus(v-show="isPlus") +{{ addChain }}
+        div.badge.minus(v-show="isMinus") -{{ addChain }}
 </template>
 
 <script>
+const IS_PLUS = 'IS_PLUS';
+const IS_MINUS = 'IS_MINUS';
+
 import { mapState } from "vuex";
 
 export default {
@@ -16,20 +19,26 @@ export default {
   data() {
     return {
       addChain: 0,
-      chainPlusBadge: false,
-      chainMinusBadge: false
+      currentState: "",
     };
   },
   computed: {
-    ...mapState("play", ["chainCount"])
+    ...mapState("play", ["chainCount"]),
+    isPlus() {
+      return this.currentState === IS_PLUS;
+    },
+    isMinus() {
+      return this.currentState === IS_MINUS;
+    }
   },
   watch: {
     chainCount(after, before) {
       this.addChain = after - before;
       if (this.addChain >= 0) {
-        this.chainPlusBadge = true;
-      } else {
-        this.chainMinusBadge = true;
+        this.currentState = IS_PLUS;
+      } else  {
+        this.addChain = Math.abs(this.addChain);
+        this.currentState = IS_MINUS;
       }
     }
   }
@@ -56,19 +65,28 @@ export default {
     top: 0;
     right: 0;
     z-index: 1;
-    background: #ff6200;
     padding: 2px;
-    border: 4px solid #ff6200;
     border-radius: 10px;
     min-width: 40px;
     color: #cccccc;
     font-weight: bold;
-  }
-}
 
-.v-enter-active,
+    &.plus {
+      background: #2196f3;
+      border: 4px solid #2196f3;
+    }
+    &.minus {
+      background: #ff6200;
+      border: 4px solid #ff6200;
+    }
+  }
+
+}
+.v-enter-active {
+  transition: opacity 0.5s;
+}
 .v-leave-active {
-  transition: opacity 1.5s;
+  transition: opacity 14.5s;
 }
 
 .v-enter,

@@ -26,11 +26,12 @@ export default {
 
   .number {
     position: absolute;
-    left: 25%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
     font-size: 45px;
     font-weight: bold;
     z-index: 1;
-    margin: 0 auto;
     color: #ffffff;
     text-shadow: #2c3e50 2px 0px, #2c3e50 -2px 0px, #2c3e50 0px -2px,
       #2c3e50 0px 2px, #2c3e50 2px 2px, #2c3e50 -2px 2px, #2c3e50 2px -2px,

@@ -10,9 +10,6 @@
 </template>
 
 <script>
-//import { mapState, mapActions } from "vuex";
-//import { mapActions } from "vuex";
-
 const PLAY_TIME = 30;
 
 export default {
@@ -23,9 +20,6 @@ export default {
       timer: null
     };
   },
-  // computed: {
-  //   ...mapState(["playTime"])
-  // },
   mounted() {
     this.start();
   },

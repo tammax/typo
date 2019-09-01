@@ -7,6 +7,7 @@
           v-list(one-line)
             template
               TypoSettingSound
+          v-divider
           v-list(one-line)
             template
               TypoSettingTheme

@@ -10,7 +10,7 @@
                     TypoRankingScore(:score="ranking.score")
                     TypoRankingMaxChain(:maxChain="ranking.maxChainCount")
                     TypoRankingCorrectRate(:rate="ranking.rate")
-                v-divider(v-if="index + 1 < rankings.length" :key="index + 100")
+                v-divider(v-if="index + 1 < rankings.length" :key="index + 1000")
 </template>
 
 <script>

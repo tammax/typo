@@ -4,11 +4,12 @@
       v-flex(xs6)
         v-subheader Sound
       v-flex(xs6)
-        v-switch(v-model="useSound")
+        toggle-button.switch-button(v-model="useSound" :height="35" :width="75" :color="{checked: '#1976d2', unchecked: '#cccccc'}")
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { ToggleButton } from 'vue-js-toggle-button'
 
 export default {
   name: "TypoSettingSound",
@@ -16,6 +17,9 @@ export default {
     return {
       useSound: true
     };
+  },
+  components: {
+    ToggleButton
   },
   computed: {
     ...mapState("setting", ["soundFlg"])
@@ -36,4 +40,5 @@ export default {
 .v-subheader {
   font-size: 18px;
 }
+
 </style>

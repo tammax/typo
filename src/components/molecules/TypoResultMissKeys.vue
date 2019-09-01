@@ -10,8 +10,6 @@
 </template>
 
 <script>
-//import TypoRankingScore from "@/components/atoms/TypoRankingScore.vue";
-
 export default {
   name: "TypoResultMissKeys",
   components: {},

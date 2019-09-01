@@ -4,16 +4,20 @@
       v-flex(xs6)
         v-subheader Dark Mode
       v-flex(xs6)
-        v-switch(v-model="isDarkMode")
+        toggle-button.switch-button(v-model="isDarkMode" :height="35" :width="75" :color="{checked: '#1976d2', unchecked: '#cccccc'}")
 </template>
 
 <script>
 import { mapState, mapActions } from "vuex";
+import { ToggleButton } from 'vue-js-toggle-button'
 
 export default {
   name: "TypoSettingTheme",
   computed: {
     ...mapState("setting", ["mode"])
+  },
+  components: {
+    ToggleButton
   },
   data() {
     return {
