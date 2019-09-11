@@ -21,7 +21,6 @@ h1 {
   font-weight: bold;
   font-size: 100px;
   color: #cccccc;
-  // text-shadow: 5px 5px 1px #999999;
   text-shadow: 5px 1px 1px #999999;
 }
 

@@ -25,7 +25,7 @@ export default {
   data() {
     return {
       tabs: null
-    }
+    };
   },
   components: {
     TypoDailyRanking,
@@ -37,7 +37,7 @@ export default {
 </script>
 
 <style scoped>
- .v-tabs__div {
-   width: 50%;
- }
+.v-tabs__div {
+  width: 50%;
+}
 </style>

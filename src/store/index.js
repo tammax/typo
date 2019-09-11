@@ -11,5 +11,5 @@ export default new Vuex.Store({
     play,
     setting
   },
- plugins: [createPersistedState({paths: ["setting"]})]
+  plugins: [createPersistedState({ paths: ["setting"] })]
 });

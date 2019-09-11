@@ -2,11 +2,17 @@
   div#row
     div.heading Score
     div.value {{ score | commaSeparate }}
-    transition(v-on:after-enter="scoreBadge = false")
-      div.badge(v-show="scoreBadge") +{{ addScore | commaSeparate }}
+    div.value {{ chainCount }}
+    transition(v-on:after-enter="currentState = ''")
+      div(v-show="currentState")
+        div.badge.plus(v-show="isPlus") +{{ addScore }}
+        div.badge.minus(v-show="isMinus") -{{ addScore }}
 </template>
 
 <script>
+const IS_PLUS = "IS_PLUS";
+const IS_MINUS = "IS_MINUS";
+
 import { mapState } from "vuex";
 
 export default {
@@ -14,16 +20,27 @@ export default {
   data() {
     return {
       addScore: 0,
-      scoreBadge: false
+      currentState: ""
     };
   },
   computed: {
-    ...mapState("play", ["score"])
+    ...mapState("play", ["score"]),
+    isPlus() {
+      return this.currentState === IS_PLUS;
+    },
+    isMinus() {
+      return this.currentState === IS_MINUS;
+    }
   },
   watch: {
     score(after, before) {
       this.addScore = after - before;
-      this.scoreBadge = true;
+      if (this.addScore >= 0) {
+        this.currentState = IS_PLUS;
+      } else {
+        this.addScore = Math.abs(this.addScore);
+        this.currentState = IS_MINUS;
+      }
     }
   },
   filters: {
@@ -51,19 +68,21 @@ export default {
 
   .badge {
     position: absolute;
-    top: 0;
     right: 0;
+    top: -10px;
+    padding: 0;
     z-index: 1;
-    background: #ff6200;
-    padding: 2px;
-    border: 4px solid #ff6200;
-    border-radius: 10px;
-    min-width: 40px;
-    color: #cccccc;
     font-weight: bold;
+    font-size: 12px;
+
+    &.plus {
+      color: #2196f3;
+    }
+    &.minus {
+      color: #ff6200;
+    }
   }
 }
-
 .v-enter-active,
 .v-leave-active {
   transition: opacity 1.5s;
@@ -71,6 +90,6 @@ export default {
 
 .v-enter,
 .v-leave-to {
-  opacity: 0;
+  opacity: 1;
 }
 </style>

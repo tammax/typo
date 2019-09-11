@@ -18,7 +18,8 @@ export default {
 </script>
 
 <style lang="scss">
-$darak-color: #111111 !important;
+// $darak-color: #111111 !important;
+$darak-color: #ffffff !important;
 $light-color: #333333 !important;
 
 #app {
@@ -41,5 +42,9 @@ $light-color: #333333 !important;
 
 .mode--light h1 {
   color: $light-color;
+}
+
+.theme--dark .v-card__text {
+  color: $darak-color;
 }
 </style>
