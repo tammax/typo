@@ -5,12 +5,10 @@
       v-flex(xs12 sm4 offset-sm4)
         v-card
           v-list(one-line)
-            template
-              TypoSettingSound
+            TypoSettingSound
           v-divider
           v-list(one-line)
-            template
-              TypoSettingTheme
+            TypoSettingTheme
     TypoTopButton
 </template>
 

@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-list-tile-sub-title.chain
+  v-list-tile-title.chain
     span Max Chain
     | {{ maxChain }}
     span chain

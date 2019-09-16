@@ -18,16 +18,16 @@ export default {
 .score {
   overflow: visible;
   position: relative;
-  height: 100%;
-  line-height: 26px;
-  font-size: 26px;
-  padding: 8px 0;
+  width: 100%;
+  font-size: 20px;
+  line-height: 20px;
+  padding: 5px 0px;
   display: block;
   text-align: center;
 
   span {
     position: absolute;
-    font-size: 15px;
+    font-size: 10px;
   }
 
   span:first-child {

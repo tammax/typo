@@ -1,10 +1,9 @@
 <template lang="pug">
-  v-container(fluid)
-    v-layout(row wrap align-center)
-      v-flex(xs6)
-        v-subheader Dark Mode
-      v-flex(xs6)
-        toggle-button.switch-button(v-model="isDarkMode" :height="35" :width="75" :color="{checked: '#1976d2', unchecked: '#cccccc'}")
+  v-layout(row wrap align-center)
+    v-flex(xs8)
+      v-subheader Dark Mode
+    v-flex(xs4)
+      toggle-button.switch-button(v-model="isDarkMode" :height="35" :width="75" :color="{checked: '#1976d2', unchecked: '#cccccc'}")
 </template>
 
 <script>
@@ -37,9 +36,3 @@ export default {
   }
 };
 </script>
-
-<style lang="scss" scoped>
-.v-subheader {
-  font-size: 18px;
-}
-</style>

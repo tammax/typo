@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-list-tile-sub-title.rate
+  v-list-tile-title.rate
     span Correct Rate
     | {{ rate }}
     span %

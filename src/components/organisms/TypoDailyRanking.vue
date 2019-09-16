@@ -4,20 +4,12 @@
       TypoRankingBox(:rankings="rankings")
     template()
       v-container
-            v-card
-              v-card-text
-                div.headline.mb-2 No ranking data
-                div There is currently no ranking data. To play, please press the button below.
-            div.button
-              v-btn(flat to="/typing" large block) Start Typing
-      //- v-row
-      //-   v-col
-      //-     v-card
-      //-       v-card-text
-      //-         div.headline.mb-2 No ranking data
-      //-         div There is currently no ranking data. To play, please press the button below.
-      //-     div.button
-      //-       v-btn(flat to="/typing" large block) Start Typing
+        v-card
+          v-card-text
+            div.headline.mb-2 No ranking data
+            div There is currently no ranking data. To play, please press the button below.
+        div.button
+          v-btn(flat to="/typing" large block) Start Typing
 </template>
 <script>
 import TypoRankingBox from "@/components/molecules/TypoRankingBox.vue";
