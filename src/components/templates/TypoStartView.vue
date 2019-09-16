@@ -1,7 +1,8 @@
 <template lang="pug">
   div
     h1 Typo
-    TypoStartMenu
+    section
+      TypoStartMenu
 </template>
 
 <script>
@@ -20,5 +21,10 @@ h1 {
   font-weight: bold;
   font-size: 100px;
   color: #cccccc;
+  text-shadow: 5px 1px 1px #999999;
+}
+
+section {
+  margin-top: 50px;
 }
 </style>

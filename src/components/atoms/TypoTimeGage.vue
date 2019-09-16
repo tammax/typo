@@ -10,31 +10,35 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+const PLAY_TIME = 999999999;
 
 export default {
   name: "TypoTimeGage",
-  computed: {
-    ...mapState(["playTime"])
+  data() {
+    return {
+      playTime: PLAY_TIME,
+      timer: null
+    };
   },
   mounted() {
     this.start();
   },
   destroyed() {
-    this.resetPlayTimer();
+    this.reset();
   },
   methods: {
-    ...mapActions(["subtractPlayTime", "setPlayTimer", "resetPlayTimer"]),
     start() {
-      this.resetPlayTimer();
-      let timer = setInterval(() => {
+      this.timer = setInterval(() => {
         if (this.playTime > 0) {
-          this.subtractPlayTime(1);
+          this.playTime--;
         } else {
           this.$router.push({ path: "result" });
         }
       }, 1000);
-      this.setPlayTimer(timer);
+    },
+    reset() {
+      clearInterval(this.timer);
+      this.playTime = PLAY_TIME;
     }
   }
 };

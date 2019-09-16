@@ -1,15 +1,11 @@
-import Vue from "vue";
-import Vuex from "vuex";
 import _ from "lodash";
 import words from "@/assets/words.json";
 
-Vue.use(Vuex);
+const ADD_SCORE = 18000;
+const WORD_TIME = 30;
 
-const ADD_SCORE = 100;
-const WORD_TIME = 100;
-const PLAY_TIME = 30;
-
-export default new Vuex.Store({
+export default {
+  namespaced: true,
   state: {
     lettersCount: 0,
     chainCount: 0,
@@ -21,8 +17,6 @@ export default new Vuex.Store({
     wordTime: WORD_TIME,
     wordTimer: null,
     word: { letters: [], jp: "" },
-    playTime: PLAY_TIME,
-    playTimer: null
   },
   getters: {
     lettersCount(state) {
@@ -43,12 +37,6 @@ export default new Vuex.Store({
     missKeys(state) {
       return state.missKeys;
     },
-    playTime(state) {
-      return state.playTime;
-    },
-    palyTimer(state) {
-      return state.palyTimer;
-    },
     wordTime(state) {
       return state.wordTime;
     },
@@ -68,6 +56,12 @@ export default new Vuex.Store({
     },
     incrementMissCount(state) {
       state.missCount++;
+    },
+    resetSuccessCount(state) {
+      state.successCount = 0;
+    },
+    resetMissCount(state) {
+      state.missCount = 0;
     },
     resetLettersCount(state) {
       state.lettersCount = 0;
@@ -95,26 +89,12 @@ export default new Vuex.Store({
       state.wordTimer = null;
       state.wordTime = WORD_TIME;
     },
-    subtractPlayTime(state, payload) {
-      state.playTime -= payload;
-    },
-    setPlayTimer(state, payload) {
-      state.playTimer = payload;
-    },
-    resetPlayTimer(state) {
-      clearInterval(state.playTimer);
-      state.playTimer = null;
-      state.playTime = PLAY_TIME;
-    },
     setWord(state, payload) {
       state.word = payload;
     },
     nextWord(state) {
       //Deepコピーした方がいいかも
       state.word = _.sample(words);
-      // console.log("--------");
-      // console.log(state.word);
-      // console.log("/--------");
       state.lettersCount = 0;
       state.wordTime = WORD_TIME;
     },
@@ -134,17 +114,7 @@ export default new Vuex.Store({
       state.missCount = 0;
       state.maxChainCount = 0;
       state.missKeys = [];
-      // state.words = words
       state.word = { letters: [], jp: "" };
-      // state.wordTime = WORD_TIME;
-      // state.wordTimer = null;
-      // state.playTime = PLAY_TIME;
-      // state.playTimer = null;
-      // wordTime: WORD_TIME,
-      // wordTimer: null,
-
-      // playTime: PLAY_TIME,
-      // playTimer: null
     }
   },
   actions: {
@@ -160,6 +130,12 @@ export default new Vuex.Store({
     incrementMissCount({ commit }) {
       commit("incrementMissCount");
     },
+    resetSuccessCount({ commit }) {
+      commit("resetSuccessCount");
+    },
+    resetMissCount({ commit }) {
+      commit("resetMissCount");
+    },
     resetLettersCount({ commit }) {
       commit("resetLettersCount");
     },
@@ -170,10 +146,12 @@ export default new Vuex.Store({
       commit("resetChainCount");
     },
     calculateAddScore({ commit }, { chainCount, length }) {
-      let addScore = ADD_SCORE * length + length * 10;
+      let addScore = ADD_SCORE * length + length * 30;
       if (chainCount > 100) {
         addScore = addScore * 1.5;
       } else if (chainCount > 50) {
+        addScore = addScore * 1.3;
+      } else if (chainCount > 30) {
         addScore = addScore * 1.2;
       } else if (chainCount > 10) {
         addScore = addScore * 1.1;
@@ -195,15 +173,6 @@ export default new Vuex.Store({
     nextWord({ commit }) {
       commit("nextWord");
     },
-    subtractPlayTime({ commit }, subtractTime) {
-      commit("subtractPlayTime", subtractTime);
-    },
-    setPlayTimer({ commit }, timer) {
-      commit("setPlayTimer", timer);
-    },
-    resetPlayTimer({ commit }) {
-      commit("resetPlayTimer");
-    },
     addMissKey({ commit }, key) {
       commit("addMissKey", key);
     },
@@ -211,4 +180,4 @@ export default new Vuex.Store({
       commit("resetStore");
     }
   }
-});
+}

@@ -1,78 +1,37 @@
 <template lang="pug">
-  div#row
-    div.heading Chain
-    div.value {{ chainCount }}
-    transition(v-on:after-enter="chainPlusBadge = false")
-      div.badge(v-show="chainPlusBadge") +{{ addChain }}
-    transition(v-on:after-enter="chainMinusBadge = false")
-      div.badge(v-show="chainMinusBadge") {{ addChain }}
+  v-card
+    v-card-text
+      div.heading Chain
+      div.value {{ chainCount }}
+      TypoBadge(:count="chainCount")
 </template>
 
 <script>
 import { mapState } from "vuex";
+import TypoBadge from "@/components/atoms/TypoBadge.vue";
 
 export default {
   name: "TypoChainCount",
-  data() {
-    return {
-      addChain: 0,
-      chainPlusBadge: false,
-      chainMinusBadge: false
-    };
+  components: {
+    TypoBadge
   },
   computed: {
-    ...mapState(["chainCount"])
-  },
-  watch: {
-    chainCount(after, before) {
-      this.addChain = after - before;
-      if (this.addChain >= 0) {
-        this.chainPlusBadge = true;
-      } else {
-        this.chainMinusBadge = true;
-      }
-    }
+    ...mapState("play", ["chainCount"])
   }
 };
 </script>
 
 <style lang="scss" scoped>
-#row {
-  position: relative;
-
-  .heading {
-    font-size: 12px;
-    position: absolute;
-    top: -10px;
-  }
-
-  .value {
-    font-size: 20px;
-    margin: 0;
-  }
-
-  .badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    background: #ff6200;
-    padding: 2px;
-    border: 4px solid #ff6200;
-    border-radius: 10px;
-    min-width: 40px;
-    color: #cccccc;
-    font-weight: bold;
-  }
+.heading {
+  font-size: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px 10px;
 }
 
-.v-enter-active,
-.v-leave-active {
-  transition: opacity 1.5s;
-}
-
-.v-enter,
-.v-leave-to {
-  opacity: 0;
+.value {
+  font-size: 20px;
+  margin: 0;
 }
 </style>

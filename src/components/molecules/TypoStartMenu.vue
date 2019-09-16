@@ -1,25 +1,15 @@
 <template lang="pug">
   div#menu
-    TypoStartButton
-    TypoRankingButton
-    TypoTrainingButton
-    TypoSettingButton
+    div
+      v-btn(flat to="/typing" large block) Start
+      v-btn(flat to="/ranking" large block) Ranking
+      v-btn(flat large block disabled) Training
+      v-btn(flat to="/setting" large block) Setting
 </template>
 
 <script>
-import TypoStartButton from "@/components/atoms/TypoStartButton.vue";
-import TypoRankingButton from "@/components/atoms/TypoRankingButton.vue";
-import TypoTrainingButton from "@/components/atoms/TypoTrainingButton.vue";
-import TypoSettingButton from "@/components/atoms/TypoSettingButton.vue";
-
 export default {
-  name: "TypoStartMenu",
-  components: {
-    TypoStartButton,
-    TypoRankingButton,
-    TypoTrainingButton,
-    TypoSettingButton
-  }
+  name: "TypoStartMenu"
 };
 </script>
 
@@ -29,6 +19,11 @@ export default {
   border-radius: 5px;
   width: 300px;
   margin: 0 auto;
-  margin-top: 50px;
+  // margin-top: 50px;
+
+  div {
+    width: 90%;
+    margin: 0 auto;
+  }
 }
 </style>

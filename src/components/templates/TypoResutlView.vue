@@ -1,95 +1,46 @@
-<template>
-  <div>
-    <h1>RESULT</h1>
-    <v-layout row>
-      <v-flex xs12 sm4 offset-sm4>
-        <v-card>
-          <v-list one-line>
-            <template>
-              <transition>
-                <div class="alert" v-if="this.rank > 0">
-                  Total Rank {{ rank }}
-                </div>
-              </transition>
-              <v-list-tile-action>
-                <span class="headname">Score</span>
-              </v-list-tile-action>
-              <v-list-tile>
-                <div class="headline">
-                  <p>
-                    {{ score | commaSeparate }}
-                    <span>pt</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-
-          <v-list one-line>
-            <template>
-              <v-list-tile-action>
-                <span class="headname">Max Chain</span>
-              </v-list-tile-action>
-              <v-list-tile>
-                <div class="headline">
-                  <p>
-                    {{ maxChainCount }}
-                    <span>cahin</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-
-          <v-list one-line>
-            <template>
-              <v-list-tile-action>
-                <span class="headname">Correct Rate</span>
-              </v-list-tile-action>
-              <v-list-tile>
-                <div class="headline">
-                  <p>
-                    {{ correctRate }}
-                    <span>%</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-
-          <v-list one-line>
-            <template>
-              <v-list-tile-action>
-                <span class="headname">Miss Keys</span>
-              </v-list-tile-action>
-              <v-list-tile v-for="(missKey, index) in missKeys" :key="index">
-                <div class="headline misskeys">
-                  <div class="misskey">{{ missKey.key }}</div>
-                  <p>
-                    {{ missKey.count }}
-                    <span>count</span>
-                  </p>
-                </div>
-              </v-list-tile>
-            </template>
-          </v-list>
-          <v-slide-y-transition></v-slide-y-transition>
-        </v-card>
-      </v-flex>
-    </v-layout>
-    <TypoTopButton />
-  </div>
+<template lang="pug">
+  div
+    TypoHeading Result
+    v-layout(row)
+      v-flex(xs12 sm4 offset-sm4)
+        v-card
+          v-list(one-line)
+            template
+              TypoResultTotalRank(:rank="rank")
+              TypoResultScore(:score="score")
+          v-list(one-line)
+            template
+              TypoResultMaxChain(:maxChainCount="maxChainCount")
+          v-list(one-line)
+            template
+              TypoResultCorrectRate(:correctRate="correctRate")
+          v-list(one-line)
+            template
+              TypoResultMissKeys(:missKeys="missKeys")
+    TypoTopButton
 </template>
 
 <script>
 import { mapState } from "vuex";
 import { db } from "@/config/firebase";
+import TypoHeading from "@/components/atoms/TypoHeading.vue";
+import TypoResultMissKeys from "@/components/molecules/TypoResultMissKeys.vue";
+import TypoResultTotalRank from "@/components/atoms/TypoResultTotalRank.vue";
+import TypoResultScore from "@/components/atoms/TypoResultScore.vue";
+import TypoResultMaxChain from "@/components/atoms/TypoResultMaxChain.vue";
+import TypoResultCorrectRate from "@/components/atoms/TypoResultCorrectRate.vue";
 import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
 import _ from "lodash";
 
 export default {
   name: "TypoResutlView",
   components: {
+    TypoHeading,
+    TypoResultMissKeys,
+    TypoResultTotalRank,
+    TypoResultScore,
+    TypoResultMaxChain,
+    TypoResultCorrectRate,
     TypoTopButton
   },
   data() {
@@ -105,7 +56,7 @@ export default {
       }
       return Math.round((this.successCount / totalCount) * 1000) / 10;
     },
-    ...mapState([
+    ...mapState("play", [
       "score",
       "chainCount",
       "successCount",
@@ -118,18 +69,12 @@ export default {
     //ゲーム結果の登録、総合順位の取得
     this.requestApi();
   },
-  filters: {
-    commaSeparate(num) {
-      return num.toLocaleString();
-    }
-  },
   methods: {
     async requestApi() {
       let id = await this.registerScore();
       let rank = await this.getRank(id);
       this.rank = rank;
     },
-
     registerScore() {
       return new Promise(resolve => {
         db.collection("playResults")
@@ -151,7 +96,6 @@ export default {
         // });
       });
     },
-
     getRank(id) {
       return new Promise(resolve => {
         db.collection("playResults")
@@ -168,6 +112,7 @@ export default {
               rankings.push(ranking);
             });
             let rank = _.findIndex(rankings, ["id", id]) + 1;
+            console.log(rank);
             resolve(rank);
           });
         // .catch(function(error) {
@@ -182,51 +127,6 @@ export default {
 <style lang="scss" scoped>
 h1 {
   color: #ffffff;
-}
-
-.alert {
-  font-size: 22px;
-  padding: 10px 0 35px 0;
-  color: #ff6200;
-  font-weight: bold;
-}
-
-.headname {
-  padding: 0 10px;
-  font-weight: bold;
-  font-size: 15px;
-  color: #ff6200;
-}
-
-.headline {
-  width: 100%;
-
-  p {
-    text-align: right;
-
-    span {
-      font-size: 15px;
-    }
-  }
-}
-
-.misskeys {
-  p {
-    font-size: 18px !important;
-    span {
-      font-size: 13px;
-    }
-  }
-  .misskey {
-    position: absolute;
-    left: 0;
-    display: inline-block;
-    text-align: left;
-    font-size: 18px;
-    padding-left: 25px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
 }
 
 .v-enter-active,

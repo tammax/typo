@@ -1,16 +1,5 @@
 <template lang="pug">
-  v-layout(row align-space-around)
-    v-flex(xs12 sm4 offset-sm4)
-      v-card
-        v-list(three-line)
-            template(v-for="(ranking, index) in rankings")
-                v-list-tile(:key="index").box
-                  TypoRankingRank(:index="index")
-                  v-list-tile-content
-                    TypoRankingScore(:score="ranking.score")
-                    TypoRankingMaxChain(:maxChain="ranking.maxChainCount")
-                    TypoRankingCorrectRate(:rate="ranking.rate")
-                v-divider(v-if="index + 1 < rankings.length" :key="index + 1000")
+
 </template>
 
 <script>

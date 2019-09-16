@@ -17,7 +17,7 @@ export default {
     letters: Array
   },
   computed: {
-    ...mapState(["lettersCount"])
+    ...mapState("play", ["lettersCount"])
   },
   methods: {
     isCurrent(index) {

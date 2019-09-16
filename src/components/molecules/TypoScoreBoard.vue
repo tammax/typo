@@ -11,13 +11,9 @@
             v-flex(d-flex)
               v-layout(row wrap)
                 v-flex(d-flex xs6 md12 align-self-center)
-                  v-card
-                    v-card-text
-                      TypoScorePoint
+                  TypoScorePoint
                 v-flex(d-flex xs6 md12 align-self-center)
-                  v-card
-                    v-card-text
-                      TypoChainCount
+                  TypoChainCount
 </template>
 
 <script>
