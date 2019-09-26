@@ -19,7 +19,7 @@ export default {
     ...mapState("setting", ["soundFlg"])
   },
   methods: {
-    ...mapActions("setting", ["setSoundFlg"]),
+    ...mapActions("setting", ["setSoundFlg"])
   }
 };
 </script>

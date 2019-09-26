@@ -1,24 +1,19 @@
 <template lang="pug">
   div
     v-list-tile-action
-      span.headname Score
+      span.headname
+        slot(name="name")
     v-list-tile
       div.headline
-        p {{ score | commaSeparate }}
-          span pt
+        p
+          slot
+          span
+            slot(name="unit")
 </template>
 
 <script>
 export default {
-  name: "TypoResultTotalRank",
-  props: {
-    score: Number
-  },
-  filters: {
-    commaSeparate(num) {
-      return num.toLocaleString();
-    }
-  }
+  name: "TypoResultLabels"
 };
 </script>
 

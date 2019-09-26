@@ -2,27 +2,23 @@
   v-card
     v-card-text
       div#row
-        div.heading Score
-        div.value {{ score | commaSeparate }}
-        TypoBadge(:count="score")
+        div.heading
+          slot(name="label")
+        div
+        div.value {{ count }}
+        TypoBadge(:count="count")
 </template>
 
 <script>
-import { mapState } from "vuex";
 import TypoBadge from "@/components/atoms/TypoBadge.vue";
 
 export default {
-  name: "TypoScorePoint",
+  name: "TypoScoreBadge",
   components: {
     TypoBadge
   },
-  computed: {
-    ...mapState("play", ["score"])
-  },
-  filters: {
-    commaSeparate(num) {
-      return num.toLocaleString();
-    }
+  props: {
+    count: Number
   }
 };
 </script>

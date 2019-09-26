@@ -16,7 +16,7 @@ export default {
     missKeys: [],
     wordTime: WORD_TIME,
     wordTimer: null,
-    word: { letters: [], jp: "" },
+    word: { letters: [], jp: "" }
   },
   getters: {
     lettersCount(state) {
@@ -180,4 +180,4 @@ export default {
       commit("resetStore");
     }
   }
-}
+};

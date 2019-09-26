@@ -13,6 +13,7 @@
     "@mdi/font": "^3.6.95",
     "axios": "^0.18.0",
     "core-js": "^2.6.5",
+    "dateformat": "^3.0.3",
     "firebase": "^6.1.0",
     "howler": "^2.1.2",
     "ismobilejs": "^0.5.2",

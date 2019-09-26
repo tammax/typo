@@ -8,7 +8,7 @@
 
 <script>
 import { mapState, mapActions } from "vuex";
-import { ToggleButton } from 'vue-js-toggle-button'
+import { ToggleButton } from "vue-js-toggle-button";
 
 export default {
   name: "TypoSettingTheme",

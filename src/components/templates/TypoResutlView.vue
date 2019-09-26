@@ -4,16 +4,29 @@
     v-layout(row)
       v-flex(xs12 sm4 offset-sm4)
         v-card
+          TypoNotice
+              span(v-if="totalRank > 0") Total {{totalRank}}位
+              span(v-else-if="totalRank == 0") Total 圏外
+              span(v-else)
+          TypoNotice
+              span(v-if="dailyRank > 0") Daily {{dailyRank}}位
+              span(v-else-if="dailyRank == 0") Daily 圏外
+              span(v-else)
           v-list(one-line)
-            template
-              TypoResultTotalRank(:rank="rank")
-              TypoResultScore(:score="score")
+            TypoResultLabels
+              span(slot="name") Score
+              span {{score}}
+              span(slot="unit") pt
           v-list(one-line)
-            template
-              TypoResultMaxChain(:maxChainCount="maxChainCount")
+            TypoResultLabels
+              span(slot="name") Max Chain
+              span {{maxChainCount}}
+              span(slot="unit") chain
           v-list(one-line)
-            template
-              TypoResultCorrectRate(:correctRate="correctRate")
+            TypoResultLabels
+              span(slot="name") Correct Rate
+              span {{correctRate}}
+              span(slot="unit") %
           v-list(one-line)
             template
               TypoResultMissKeys(:missKeys="missKeys")
@@ -23,29 +36,29 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/config/firebase";
+import _ from "lodash";
+import dateformat from "dateformat";
 import TypoHeading from "@/components/atoms/TypoHeading.vue";
+import TypoResultLabels from "@/components/molecules/TypoResultLabels.vue";
 import TypoResultMissKeys from "@/components/molecules/TypoResultMissKeys.vue";
 import TypoResultTotalRank from "@/components/atoms/TypoResultTotalRank.vue";
-import TypoResultScore from "@/components/atoms/TypoResultScore.vue";
-import TypoResultMaxChain from "@/components/atoms/TypoResultMaxChain.vue";
-import TypoResultCorrectRate from "@/components/atoms/TypoResultCorrectRate.vue";
+import TypoNotice from "@/components/atoms/TypoNotice.vue";
 import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
-import _ from "lodash";
 
 export default {
   name: "TypoResutlView",
   components: {
     TypoHeading,
-    TypoResultMissKeys,
     TypoResultTotalRank,
-    TypoResultScore,
-    TypoResultMaxChain,
-    TypoResultCorrectRate,
+    TypoResultLabels,
+    TypoResultMissKeys,
+    TypoNotice,
     TypoTopButton
   },
   data() {
     return {
-      rank: 0
+      totalRank: 0,
+      dailyRank: 0
     };
   },
   computed: {
@@ -67,15 +80,17 @@ export default {
   },
   mounted() {
     //ゲーム結果の登録、総合順位の取得
-    this.requestApi();
+    let date = new Date();
+    let today = Number(dateformat(date, "yyyymmdd"));
+    this.requestApi(today);
   },
   methods: {
-    async requestApi() {
-      let id = await this.registerScore();
-      let rank = await this.getRank(id);
-      this.rank = rank;
+    async requestApi(today) {
+      let id = await this.registerScore(today);
+      this.totalRank = await this.getTotalRank(id);
+      this.dailyRank = await this.getDailyRank(id, today);
     },
-    registerScore() {
+    registerScore(today) {
       return new Promise(resolve => {
         db.collection("playResults")
           .add({
@@ -85,18 +100,19 @@ export default {
             missCount: this.missCount,
             misskeys: this.missKeys,
             rate: this.correctRate,
+            date: today,
             createdAt: new Date()
           })
           .then(function({ id }) {
-            // console.log(`document writing sucess: id ${id}`);
+            console.log(`document writing sucess: id ${id}`);
             resolve(id);
+          })
+          .catch(function(error) {
+            console.error("Error writing document: ", error);
           });
-        // .catch(function(error) {
-        //   console.error("Error writing document: ", error);
-        // });
       });
     },
-    getRank(id) {
+    getTotalRank(id) {
       return new Promise(resolve => {
         db.collection("playResults")
           .orderBy("score", "desc")
@@ -114,10 +130,32 @@ export default {
             let rank = _.findIndex(rankings, ["id", id]) + 1;
             console.log(rank);
             resolve(rank);
+          })
+          .catch(function(error) {
+            console.log("Error getting document:", error);
           });
-        // .catch(function(error) {
-        //   console.log("Error getting document:", error);
-        // });
+      });
+    },
+    getDailyRank(id, today) {
+      return new Promise(resolve => {
+        db.collection("playResults")
+          .where("date", "==", today)
+          .orderBy("score", "desc")
+          .orderBy("maxChainCount", "desc")
+          .orderBy("successCount", "desc")
+          .limit(10)
+          .get()
+          .then(data => {
+            let rankings = [];
+            data.forEach(doc => {
+              let ranking = doc.data();
+              ranking["id"] = doc.id;
+              rankings.push(ranking);
+            });
+            let rank = _.findIndex(rankings, ["id", id]) + 1;
+            console.log(rank);
+            resolve(rank);
+          });
       });
     }
   }
