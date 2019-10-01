@@ -13,7 +13,7 @@
 
 <script>
 export default {
-  name: "TypoResultLabels"
+  name: "TypoResultItemRow"
 };
 </script>
 
@@ -21,8 +21,7 @@ export default {
 .headname {
   padding: 0 10px;
   font-weight: bold;
-  font-size: 15px;
-  color: #ff6200;
+  font-size: 16px;
 }
 
 .headline {
@@ -30,6 +29,7 @@ export default {
 
   p {
     text-align: right;
+    color: #1976d2;
 
     span {
       font-size: 15px;

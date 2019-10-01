@@ -4,26 +4,29 @@
     v-layout(row)
       v-flex(xs12 sm4 offset-sm4)
         v-card
-          TypoNotice
-              span(v-if="totalRank > 0") Total {{totalRank}}位
-              span(v-else-if="totalRank == 0") Total 圏外
-              span(v-else)
-          TypoNotice
-              span(v-if="dailyRank > 0") Daily {{dailyRank}}位
-              span(v-else-if="dailyRank == 0") Daily 圏外
-              span(v-else)
+          v-layout(row wrap)
+            v-flex(d-flex xs12 md6 align-self-center)
+              TypoNotice
+                  v-card-text(v-if="totalRank > 0") Total   {{totalRank}}nd
+                  v-card-text(v-else-if="totalRank == 0") Total no Rank...
+                  v-card-text(v-else)
+            v-flex(d-flex xs12 md6 align-self-center)
+              TypoNotice
+                  v-card-text(v-if="dailyRank > 0") Daily   {{dailyRank}}nd
+                  v-card-text(v-else-if="dailyRank == 0") Daily no Rank...
+                  v-card-text(v-else)
           v-list(one-line)
-            TypoResultLabels
+            TypoResultItemRow
               span(slot="name") Score
               span {{score}}
               span(slot="unit") pt
           v-list(one-line)
-            TypoResultLabels
+            TypoResultItemRow
               span(slot="name") Max Chain
               span {{maxChainCount}}
               span(slot="unit") chain
           v-list(one-line)
-            TypoResultLabels
+            TypoResultItemRow
               span(slot="name") Correct Rate
               span {{correctRate}}
               span(slot="unit") %
@@ -39,7 +42,7 @@ import { db } from "@/config/firebase";
 import _ from "lodash";
 import dateformat from "dateformat";
 import TypoHeading from "@/components/atoms/TypoHeading.vue";
-import TypoResultLabels from "@/components/molecules/TypoResultLabels.vue";
+import TypoResultItemRow from "@/components/molecules/TypoResultItemRow.vue";
 import TypoResultMissKeys from "@/components/molecules/TypoResultMissKeys.vue";
 import TypoResultTotalRank from "@/components/atoms/TypoResultTotalRank.vue";
 import TypoNotice from "@/components/atoms/TypoNotice.vue";
@@ -50,7 +53,7 @@ export default {
   components: {
     TypoHeading,
     TypoResultTotalRank,
-    TypoResultLabels,
+    TypoResultItemRow,
     TypoResultMissKeys,
     TypoNotice,
     TypoTopButton

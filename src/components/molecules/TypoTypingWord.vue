@@ -64,7 +64,6 @@ export default {
       });
 
       sound.play();
-
       // Change global volume.
       Howler.volume(999);
     },
@@ -92,7 +91,6 @@ export default {
     ]),
     typeLetters({ key }) {
       let letters = this.word.letters;
-      // console.log(letters);
       if (letters) {
         //表示された文字が入力した文字と正しいか判定
         let showLetter = letters[this.lettersCount].toUpperCase();
@@ -101,7 +99,6 @@ export default {
             this.beatSuccess();
           }
           this.incrementLettersCount();
-          // this.calculateAddScore(this.chainCount);
           this.incrementSuccessCount();
           if (this.lettersCount === letters.length) {
             if (this.soundFlg) {
