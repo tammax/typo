@@ -1,13 +1,13 @@
 <template lang="pug">
   div
-    v-list-tile-action
-      span.headname
-        slot(name="name")
+    p.headname
+      slot(name="name")
     v-list-tile
       div.headline
         p
-          slot
-          span
+          span.value
+            slot(name="value")
+          span.unit
             slot(name="unit")
 </template>
 
@@ -19,19 +19,18 @@ export default {
 
 <style lang="scss" scoped>
 .headname {
-  padding: 0 10px;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 18px;
 }
-
 .headline {
   width: 100%;
-
   p {
-    text-align: right;
-    color: #1976d2;
-
-    span {
+    padding: 10px;
+    .value {
+      color: #1976d2;
+      padding: 10px;
+    }
+    .unit {
       font-size: 15px;
     }
   }

@@ -6,6 +6,7 @@
 <script>
 import TypoRankingItem from "@/components/molecules/TypoRankingItem.vue";
 import { db } from "@/config/firebase";
+import { rankingCount } from "@/helper/const.js";
 
 export default {
   name: "TypoTotalRanking",
@@ -22,7 +23,7 @@ export default {
       .orderBy("score", "desc")
       .orderBy("maxChainCount", "desc")
       .orderBy("successCount", "desc")
-      .limit(10)
+      .limit(rankingCount)
       .get()
       .then(data => {
         data.forEach(doc => {

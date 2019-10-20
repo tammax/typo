@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-list-tile-title.labels
+  v-list-tile-title.row
     span.label
       slot(name="label")
     span.value
@@ -15,7 +15,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.labels {
+.row {
   display: -webkit-flex;
   display: flex;
   width: 100%;

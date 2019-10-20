@@ -4,33 +4,47 @@
     v-layout(row)
       v-flex(xs12 sm4 offset-sm4)
         v-card
-          v-layout(row wrap)
-            v-flex(d-flex xs12 md6 align-self-center)
-              TypoNotice
-                  v-card-text(v-if="totalRank > 0") Total   {{totalRank}}nd
-                  v-card-text(v-else-if="totalRank == 0") Total no Rank...
-                  v-card-text(v-else)
-            v-flex(d-flex xs12 md6 align-self-center)
-              TypoNotice
-                  v-card-text(v-if="dailyRank > 0") Daily   {{dailyRank}}nd
-                  v-card-text(v-else-if="dailyRank == 0") Daily no Rank...
-                  v-card-text(v-else)
+          v-list(one-line)
+            TypoResultItemRow
+              span(slot="name") Total
+              span(slot="value")
+                transition
+                    span(v-if="totalRank > 0") {{totalRank}}
+                    span(v-else-if="totalRank === 0") 圏外
+                    span(v-else)
+              span(v-if="totalRank > 0")(slot="unit") 位
+          v-divider
+
+          v-list(one-line)
+            TypoResultItemRow
+              span(slot="name") Daily
+              span(slot="value")
+                transition
+                    span(v-if="dailyRank > 0") {{dailyRank}}
+                    span(v-else-if="dailyRank === 0") 圏外
+                    span(v-else)
+              span(v-if="dailyRank > 0")(slot="unit") 位
+          v-divider
+
           v-list(one-line)
             TypoResultItemRow
               span(slot="name") Score
-              span {{score}}
+              span(slot="value") {{score}}
               span(slot="unit") pt
+          v-divider
           v-list(one-line)
             TypoResultItemRow
               span(slot="name") Max Chain
-              span {{maxChainCount}}
-              span(slot="unit") chain
+              span(slot="value") {{maxChainCount}}
+              span(slot="unit") ch
+          v-divider
           v-list(one-line)
             TypoResultItemRow
               span(slot="name") Correct Rate
-              span {{correctRate}}
+              span(slot="value") {{correctRate}}
               span(slot="unit") %
-          v-list(one-line)
+          v-divider(v-if="hasMissKeys")
+          v-list(one-line)(v-if="hasMissKeys")
             template
               TypoResultMissKeys(:missKeys="missKeys")
     TypoTopButton
@@ -39,7 +53,8 @@
 <script>
 import { mapState } from "vuex";
 import { db } from "@/config/firebase";
-import _ from "lodash";
+import { rankingCount } from "@/helper/const.js";
+import { findIndex } from "lodash";
 import dateformat from "dateformat";
 import TypoHeading from "@/components/atoms/TypoHeading.vue";
 import TypoResultItemRow from "@/components/molecules/TypoResultItemRow.vue";
@@ -60,11 +75,14 @@ export default {
   },
   data() {
     return {
-      totalRank: 0,
-      dailyRank: 0
+      totalRank: null,
+      dailyRank: null
     };
   },
   computed: {
+    hasMissKeys() {
+      return Object.keys(this.missKeys).length > 0;
+    },
     correctRate() {
       let totalCount = this.missCount + this.successCount;
       if (totalCount <= 0) {
@@ -121,7 +139,7 @@ export default {
           .orderBy("score", "desc")
           .orderBy("maxChainCount", "desc")
           .orderBy("successCount", "desc")
-          .limit(10)
+          .limit(rankingCount)
           .get()
           .then(data => {
             let rankings = [];
@@ -130,7 +148,7 @@ export default {
               ranking["id"] = doc.id;
               rankings.push(ranking);
             });
-            let rank = _.findIndex(rankings, ["id", id]) + 1;
+            let rank = findIndex(rankings, ["id", id]) + 1;
             console.log(rank);
             resolve(rank);
           })
@@ -146,7 +164,7 @@ export default {
           .orderBy("score", "desc")
           .orderBy("maxChainCount", "desc")
           .orderBy("successCount", "desc")
-          .limit(10)
+          .limit(rankingCount)
           .get()
           .then(data => {
             let rankings = [];
@@ -155,7 +173,7 @@ export default {
               ranking["id"] = doc.id;
               rankings.push(ranking);
             });
-            let rank = _.findIndex(rankings, ["id", id]) + 1;
+            let rank = findIndex(rankings, ["id", id]) + 1;
             console.log(rank);
             resolve(rank);
           });

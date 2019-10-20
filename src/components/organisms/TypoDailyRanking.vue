@@ -10,6 +10,7 @@ import TypoRankingItem from "@/components/molecules/TypoRankingItem.vue";
 import TypoRankingNoData from "@/components/molecules/TypoRankingNoData.vue";
 import dateformat from "dateformat";
 import { db } from "@/config/firebase";
+import { rankingCount } from "@/helper/const.js";
 
 export default {
   name: "TypoDailyRanking",
@@ -35,7 +36,7 @@ export default {
       .orderBy("score", "desc")
       .orderBy("maxChainCount", "desc")
       .orderBy("successCount", "desc")
-      .limit(10)
+      .limit(rankingCount)
       .get()
       .then(data => {
         data.forEach(doc => {

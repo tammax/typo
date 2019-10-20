@@ -11,18 +11,6 @@ import "./registerServiceWorker";
 
 Vue.use(Vuetify);
 
-// Helpers
-// import colors from "vuetify/es5/util/colors";
-
-// Vue.use(Vuetify, {
-//   theme: {
-//     primary: colors.purple,
-//     secondary: colors.grey.darken1,
-//     accent: colors.shades.black,
-//     error: colors.red.accent3
-//   }
-// });
-
 Vue.config.productionTip = false;
 
 new Vue({

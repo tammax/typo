@@ -29,23 +29,23 @@ export default {
   font-size: 18px;
 }
 
-.xxx {
-  text-align: left;
-}
+    .xxx {
+      text-align: left;
+    }
 
-.name {
-  text-align: right;
-  padding: 10px 20px;
-  font-size: 20px;
-}
+    .name {
+      text-align: right;
+      padding: 10px 20px;
+      font-size: 20px;
+    }
 
-.value {
-  font-size: 24px;
-  color: #1976d2;
-}
+    .value {
+      font-size: 24px;
+      color: #1976d2;
+    }
 
-.unit {
-  padding: 10px;
-  font-size: 15px;
-}
+    .unit {
+      padding: 10px;
+      font-size: 15px;
+    }
 </style>

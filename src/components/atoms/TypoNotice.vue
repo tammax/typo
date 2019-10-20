@@ -1,6 +1,6 @@
 <template lang="pug">
   transition
-    div.alert
+    span.alert
       slot
 </template>
 
@@ -11,8 +11,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.alert {
-  font-size: 20px;
-  font-weight: bold;
-}
+// .alert {
+//   font-size: 20px;
+//   font-weight: bold;
+// }
 </style>

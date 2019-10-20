@@ -1,8 +1,6 @@
-import _ from "lodash";
+import { sample, findIndex } from "lodash";
 import words from "@/assets/words.json";
-
-const ADD_SCORE = 18000;
-const WORD_TIME = 30;
+import { wordTime, addPoint } from "@/helper/const.js";
 
 export default {
   namespaced: true,
@@ -14,7 +12,7 @@ export default {
     missCount: 0,
     maxChainCount: 0,
     missKeys: [],
-    wordTime: WORD_TIME,
+    wordTime: wordTime,
     wordTimer: null,
     word: { letters: [], jp: "" }
   },
@@ -87,19 +85,18 @@ export default {
     resetWordTimer(state) {
       clearInterval(state.wordTimer);
       state.wordTimer = null;
-      state.wordTime = WORD_TIME;
+      state.wordTime = wordTime;
     },
     setWord(state, payload) {
       state.word = payload;
     },
     nextWord(state) {
-      //Deepコピーした方がいいかも
-      state.word = _.sample(words);
+      state.word = sample(words);
       state.lettersCount = 0;
-      state.wordTime = WORD_TIME;
+      state.wordTime = wordTime;
     },
     addMissKey(state, payload) {
-      let index = _.findIndex(state.missKeys, ["key", payload]);
+      let index = findIndex(state.missKeys, ["key", payload]);
       if (state.missKeys[index]) {
         state.missKeys[index].count++;
       } else {
@@ -146,7 +143,7 @@ export default {
       commit("resetChainCount");
     },
     calculateAddScore({ commit }, { chainCount, length }) {
-      let addScore = ADD_SCORE * length + length * 30;
+      let addScore = addPoint * length + length * 30;
       if (chainCount > 100) {
         addScore = addScore * 1.5;
       } else if (chainCount > 50) {
