@@ -19,7 +19,6 @@ export default {
   border-radius: 5px;
   width: 300px;
   margin: 0 auto;
-  // margin-top: 50px;
 
   div {
     width: 90%;

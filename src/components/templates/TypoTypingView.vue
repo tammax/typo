@@ -12,7 +12,6 @@ import TypoWordTimeGage from "@/components/atoms/TypoWordTimeGage.vue";
 import TypoTypingWord from "@/components/molecules/TypoTypingWord.vue";
 import TypoTopButton from "@/components/atoms/TypoTopButton.vue";
 
-
 export default {
   name: "TypoTypingView",
   components: {

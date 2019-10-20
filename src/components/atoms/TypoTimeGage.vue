@@ -10,7 +10,8 @@
 </template>
 
 <script>
-const PLAY_TIME = 999999999;
+// const PLAY_TIME = 999999999;
+const PLAY_TIME = 10;
 
 export default {
   name: "TypoTimeGage",

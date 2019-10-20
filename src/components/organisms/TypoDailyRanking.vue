@@ -1,20 +1,16 @@
 <template lang="pug">
   div
     template(v-if="hasRankingData")
-      TypoRankingBox(:rankings="rankings")
-    template()
-      v-container
-        v-card
-          v-card-text
-            div.headline.mb-2 No ranking data
-            div There is currently no ranking data. To play, please press the button below.
-        div.button
-          v-btn(flat to="/typing" large block) Start Typing
+      TypoRankingItem(:rankings="rankings")
+    template(v-else)
+      TypoRankingNoData
 </template>
 <script>
-import TypoRankingBox from "@/components/molecules/TypoRankingBox.vue";
-import _ from "lodash";
+import TypoRankingItem from "@/components/molecules/TypoRankingItem.vue";
+import TypoRankingNoData from "@/components/molecules/TypoRankingNoData.vue";
+import dateformat from "dateformat";
 import { db } from "@/config/firebase";
+import { rankingCount } from "@/helper/const.js";
 
 export default {
   name: "TypoDailyRanking",
@@ -25,24 +21,22 @@ export default {
   },
   computed: {
     hasRankingData() {
-      return this.rankings.length > 0;
+      return Object.keys(this.rankings).length > 0;
     }
   },
   components: {
-    TypoRankingBox
+    TypoRankingItem,
+    TypoRankingNoData
   },
   mounted() {
     let date = new Date();
-    date.setHours(0, 0, 0, 0);
-    let startDate = _.cloneDeep(date);
-    date.setDate(date.getDate() + 1);
-    let endDate = date;
-
+    let today = Number(dateformat(date, "yyyymmdd"));
     db.collection("playResults")
-      .orderBy("createdAt", "asc")
-      .startAt(startDate)
-      .endBefore(endDate)
-      .limit(10)
+      .where("date", "==", today)
+      .orderBy("score", "desc")
+      .orderBy("maxChainCount", "desc")
+      .orderBy("successCount", "desc")
+      .limit(rankingCount)
       .get()
       .then(data => {
         data.forEach(doc => {
@@ -60,5 +54,9 @@ export default {
 .button {
   width: 90%;
   margin: 0 auto;
+}
+
+.box {
+  padding: 10px;
 }
 </style>

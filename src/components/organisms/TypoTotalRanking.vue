@@ -1,11 +1,12 @@
 <template lang="pug">
   div
-    TypoRankingBox(:rankings="rankings")
+    TypoRankingItem(:rankings="rankings")
 </template>
 
 <script>
-import TypoRankingBox from "@/components/molecules/TypoRankingBox.vue";
+import TypoRankingItem from "@/components/molecules/TypoRankingItem.vue";
 import { db } from "@/config/firebase";
+import { rankingCount } from "@/helper/const.js";
 
 export default {
   name: "TypoTotalRanking",
@@ -15,24 +16,23 @@ export default {
     };
   },
   components: {
-    TypoRankingBox
+    TypoRankingItem
   },
   mounted() {
     db.collection("playResults")
       .orderBy("score", "desc")
       .orderBy("maxChainCount", "desc")
       .orderBy("successCount", "desc")
-      .limit(10)
+      .limit(rankingCount)
       .get()
       .then(data => {
         data.forEach(doc => {
-          // console.log(doc.id, " => ", doc.data());
           this.rankings.push(doc.data());
         });
+      })
+      .catch(function(error) {
+        console.log("Error getting document:", error);
       });
-    // .catch(function(error) {
-    //   console.log("Error getting document:", error);
-    // });
   }
 };
 </script>

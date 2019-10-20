@@ -11,22 +11,26 @@
             v-flex(d-flex)
               v-layout(row wrap)
                 v-flex(d-flex xs6 md12 align-self-center)
-                  TypoScorePoint
+                  TypoScoreBadge(:count="score")
+                    span(slot="label") Score
                 v-flex(d-flex xs6 md12 align-self-center)
-                  TypoChainCount
+                  TypoScoreBadge(:count="chainCount")
+                    span(slot="label") Chain
 </template>
 
 <script>
-import TypoChainCount from "@/components/atoms/TypoChainCount.vue";
-import TypoScorePoint from "@/components/atoms/TypoScorePoint.vue";
+import { mapState } from "vuex";
+import TypoScoreBadge from "@/components/molecules/TypoScoreBadge.vue";
 import TypoTimeGage from "@/components/atoms/TypoTimeGage.vue";
 
 export default {
   name: "TypoScoreBoard",
   components: {
-    TypoScorePoint,
-    TypoChainCount,
+    TypoScoreBadge,
     TypoTimeGage
+  },
+  computed: {
+    ...mapState("play", ["chainCount", "score"])
   }
 };
 </script>

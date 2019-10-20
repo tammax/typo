@@ -13,6 +13,7 @@ export default {
   name: "TypoBadge",
   data() {
     return {
+      addCount: 0,
       currentState: ""
     };
   },

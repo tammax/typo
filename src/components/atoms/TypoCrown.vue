@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "TypoRankingRank",
+  name: "TypoCrown",
   props: {
     index: Number
   }
