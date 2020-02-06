@@ -1,0 +1,563 @@
+apple	リンゴ
+banana	バナナ
+pineapple	パイナップル
+beef	牛肉
+chicken	鶏肉
+pork	豚肉
+tuna	鮪
+mackerel	鯖
+sweetfish	鮎
+herring	鰊
+sesame	ごま
+lemon	レモン
+orange	ミカン
+garlic	ニンニク
+lettuce	レタス
+cabbage	キャベツ
+potato	ジャガイモ
+papaya	パパイヤ
+grapes	葡萄
+cucumber	キュウリ
+tomato	トマト
+strawberry	イチゴ
+coffee	コーヒー
+black tea	紅茶
+cheese	チーズ
+bread	パン
+rice	米
+pasta	パスタ
+radish	ダイコン
+corn	トウモロコシ
+squirrel	リス
+bear	クマ
+duck	アヒル
+dog	犬
+cat	猫
+wolf	狼
+cow	牛
+pig	豚
+bird	鳥
+crow	カラス
+mountain	山
+river	川
+valley	谷
+hill	丘
+sky	空
+space	宇宙
+ocean	海
+ground	地面
+underground	地下
+christmas	クリスマス
+time	時間
+spring	春
+summer	夏
+autumn	秋
+winter	冬
+hot	暑い
+cold	寒い
+eat	食べる
+escape	逃げる
+sleep	寝る
+swim	泳ぐ
+laugh	笑う
+speak	話す
+dance	踊る
+get angry	怒る
+gorilla	ゴリラ
+rhinoceros	サイ
+elephant	ゾウ
+monkey	サル
+water	水
+fire	火
+woods	森
+electrical	電気
+ice	氷
+wood	木
+insect	昆虫
+human	人間
+man	男
+woman	女
+children	子供
+grown up	大人
+darkness	闇
+light	光
+road	道
+grass	草
+enemy	敵
+meeting	会議
+homework	宿題
+pencil	鉛筆
+eraser	消しゴム
+ruler	定規
+note	ノート
+paper	紙
+hair	髪
+god	神
+buddha	仏
+mushroom	キノコ
+medicine	薬
+wallet	財布
+book	本
+clock	時計
+money	お金
+sugar	砂糖
+salt	塩
+friend	友達
+glass	ガラス
+wall	壁
+floor	床
+ceiling	天井
+ship	船
+car	車
+bicycle	自転車
+air	空気
+weather	天気
+airplane	飛行機
+snow	雪
+rain	雨
+sunny	晴れ
+cloudy	曇り
+thunder	雷
+cloud	雲
+volcano	火山
+continent	大陸
+australia	オーストラリア
+germany	ドイツ
+japan	日本
+america	アメリカ
+china	中国
+italy	イタリア
+england	イギリス
+france	フランス
+baseball	野球
+swimming	水泳
+golf	ゴルフ
+tennis	テニス
+football	サッカー
+box	箱
+lid	蓋
+scissors	ハサミ
+seaweed	海苔
+moss	苔
+cutter	カッター
+armor	鎧
+leg	足
+head	頭
+breast	胸
+hand	手
+face	顔
+mouth	口
+eye	目
+ear	耳
+nose	鼻
+flower	花
+bee	蜂
+village	村
+town	町
+age	年齢
+city	都市
+birthday	誕生日
+street address	住所
+name	名前
+height	身長
+body weight	体重
+hobby	趣味
+qualification	資格
+marriage	結婚
+retirement	退職
+change of job	転職
+birth	出産
+graduate	卒業
+admission	入学
+course	進路
+history	歴史
+strong	強い
+weak	弱い
+usually	普通
+sweet	甘い
+spicy	辛い
+push	押す
+pull	引く
+iron	鉄
+copper	銅
+gold	ゴールド
+silver	シルバー
+platinum	プラチナ
+blue	青
+red	赤
+yellow	黄色
+green	緑
+black	黒
+white	白
+purple	紫
+fish	魚
+meat	肉
+vegetables	野菜
+fruit	果物
+chopsticks	箸
+bridge	橋
+start	始める
+end	終わる
+power	力
+skill	技
+cup	コップ
+straw	ストロー
+chime	チャイム
+kick	蹴る
+open	開ける
+close	閉める
+bag	カバン
+shoes	靴
+clothes	洋服
+shirt	シャツ
+pants	ズボン
+coat	コート
+game	ゲーム
+parent	親
+brother	兄弟
+sister	姉妹
+letter	文字
+key	鍵
+door	扉
+tv set	テレビ
+bath	風呂
+kitchen	キッチン
+desk	机
+brown	茶色
+attack	攻撃
+defense	防御
+rise	上昇
+decrease	減少
+shopping	買い物
+chocolate	チョコレート
+tea	お茶
+battery	電池
+screw	ネジ
+nail	釘
+sword	剣
+axe	斧
+spear	槍
+whip	鞭
+shield	盾
+bow	弓
+phenomenon	現象
+current	現在
+past	過去
+future	未来
+necklace	ネックレス
+mother	母
+father	父
+son	息子
+grandchild	孫
+jewelry	宝石
+diamond	ダイヤモンド
+ruby	ルビー
+sapphire	サファイア
+emerald	エメラルド
+refrigerator	冷蔵庫
+fan	扇風機
+spring	泉
+cherry blossom	サクラ
+rose	バラ
+lily	ユリ
+dandelion	タンポポ
+lion	ライオン
+crocodile	ワニ
+lizard	トカゲ
+snake	ヘビ
+cobra	コブラ
+hippo	カバ
+tiger	トラ
+giraffe	キリン
+shark	サメ
+animal	動物
+plant	植物
+liquor	酒
+beer	ビール
+wine	ワイン
+camera	カメラ
+video	ビデオ
+knife	ナイフ
+mixer	ミキサー
+detergent	洗剤
+soap	石鹸
+leather	革
+hemp	麻
+night	夜
+noon	昼
+evening	夕方
+early morning	早朝
+in the morning	午前中
+afternoon	午後
+ball	ボール
+glove	グローブ
+bat	バット
+racket	ラケット
+umbrella	傘
+curtain	カーテン
+teacher	先生
+student	生徒
+wheat	麦
+phone	電話
+keyboard	キーボード
+mouse or rat	ネズミ
+vacuum cleaner	掃除機
+microwave	電子レンジ
+toilet	トイレ
+numbers	数字
+symbol	記号
+encryption	暗号
+graph	グラフ
+vote	投票
+election	選挙
+doll	人形
+puppet	操り人形
+perfect	完全
+success	成功
+failure	失敗
+love	愛
+sadness	悲しみ
+joy	喜び
+hatred	憎しみ
+anger	怒り
+friend	友達
+photo	写真
+sweater	セーター
+motion	運動
+object	物体
+have	持つ
+throw away	捨てる
+pick up	拾う
+tired	疲れ
+holiday	休み
+public holiday	祝日
+get up	起きる
+canning	缶詰
+baggage	荷物
+belt	ベルト
+fastener	ファスナー
+metal fittings	金具
+hook	ホック
+light bulb	電球
+button	ボタン
+frog	カエル
+beetle	カブトムシ
+stag	クワガタ
+snails	カタツムリ
+flies	ハエ
+ant	蟻
+swallow	ツバメ
+owl	フクロウ
+pear	梨
+peach	モモ
+persimmon	柿
+oyster	カキ
+shellfish	貝
+sales	営業
+accounting	経理
+guest	客
+japanese	日本語
+english	英語
+envelope	封筒
+letter	手紙
+clip	クリップ
+bench	ベンチ
+chair	椅子
+sofa	ソファー
+towel	タオル
+boxing	ボクシング
+fishing	釣り
+cookie	クッキー
+swan	白鳥
+lake	湖
+month	月
+earth	地球
+jupiter	木星
+saturn	土星
+comet	彗星
+mercury	水星
+meteorite	隕石
+accident	事故
+membership fee	会費
+avoidance	回避
+hamster	ハムスター
+burdock	ゴボウ
+yesterday	昨日
+tomorrow	明日
+today	今日
+pumpkin	カボチャ
+dinosaur	恐竜
+monster	怪物
+life	生活
+mask	マスク
+charging	充電
+preparation	準備
+handle	ハンドル
+tie	ネクタイ
+bike	バイク
+calculate	計算する
+bone	骨
+nail	爪
+fang	牙
+sound	音
+voice	声
+stomach	胃
+brain	脳
+electric train	電車
+station	駅
+signal	信号
+ticket	切符
+stairs	階段
+rotation	回転
+flag	旗
+high	高い
+cheap	安い
+hawk	鷹
+eagle	鷲
+price	価格
+experience	経験
+police	警察
+doctor	医者
+employee	会社員
+pharmacist	薬剤師
+expert	専門家
+awakening	覚醒
+engineer	エンジニア
+entertainer	芸人
+hokkaido	北海道
+aomori prefecture	青森県
+iwate prefecture	岩手県
+miyagi prefecture	宮城県
+akita	秋田県
+yamagata prefecture	山形県
+fukushima prefecture	福島県
+ibaraki prefecture	茨城県
+tochigi prefecture	栃木県
+gunma prefecture	群馬県
+saitama	埼玉県
+chiba	千葉県
+tokyo	東京都
+kanagawa prefecture	神奈川県
+niigata	新潟県
+toyama prefecture	富山県
+ishikawa prefecture	石川県
+fukui prefecture	福井県
+yamanashi prefecture	山梨県
+nagano prefecture	長野県
+gifu prefecture	岐阜県
+shizuoka prefecture	静岡県
+aichi prefecture	愛知県
+mie prefecture	三重県
+shiga prefecture	滋賀県
+kyoto	京都府
+osaka prefecture	大阪府
+hyogo prefecture	兵庫県
+nara prefecture	奈良県
+wakayama prefecture	和歌山県
+tottori prefecture	鳥取県
+shimane prefecture	島根県
+okayama prefecture	岡山県
+hiroshima prefecture	広島県
+yamaguchi prefecture	山口県
+tokushima	徳島県
+kagawa prefecture	香川県
+ehime prefecture	愛媛県
+kochi prefecture	高知県
+fukuoka prefecture	福岡県
+saga prefecture	佐賀県
+nagasaki prefecture	長崎県
+kumamoto prefecture	熊本県
+oita prefecture	大分県
+miyazaki prefecture	宮崎県
+kagoshima prefecture	鹿児島県
+okinawa prefecture	沖縄県
+map	地図
+infinite	無限
+garbage can	ゴミ箱
+monday	月曜日
+tuesday	火曜日
+wednesday	水曜日
+thursday	木曜日
+friday	金曜日
+saturday	土曜日
+sunday	日曜日
+calendar	カレンダー
+ january	1月
+february	2月
+march	3月
+april	4月
+may	5月
+june	6月
+july	7月
+august	8月
+september	9月
+october	10月
+november	11月
+december	12月
+pizza	ピザ
+hat	帽子
+socks	靴下
+country	国
+mirror	鏡
+skin	肌
+advantage	利点
+disadvantage	欠点
+effect	効果
+demon	鬼
+demon	悪魔
+helmet	兜
+horse	馬
+knight	騎士
+bandage	包帯
+scar	傷
+scar	傷跡
+fracture	骨折
+hospitalization	入院
+hospital	病院
+sick	病気
+recovery	回復
+safety	安全
+relief	安心
+park	公園
+amusement park	遊園地
+ferris wheel	観覧車
+roller coaster	ジェットコースター
+pirates	海賊
+breakfast	朝食
+lunch	昼食
+dinner	夕食
+labor	労働
+practice	練習
+cuisine	料理
+reading	読書
+walk	散歩
+warning	警告
+danger	危険
+advice	忠告
+notice	お知らせ
+understanding	理解
+fake	偽物
+leaf	葉
+seed	種
+steam	蒸気
+onion	タマネギ
+classroom	教室
+school	学校
+window	窓
+schoolyard	校庭
+emperor	皇帝
+positive	肯定的
+passive	消極的
+process	工程
+denial	否定
+decide	決定する
+necessary	必要
+have	持っている
+separate	分ける
+to add	追加する
+to compensate	補填する
+give	付与する
+belong to	所属する
+function	関数
+recommendation	推奨
+insurance	保険

@@ -4,6 +4,7 @@
 ```
 yarn install
 ```
+※node version v10.13.0
 
 ### Compiles and hot-reloads for development
 ```
@@ -28,6 +29,11 @@ yarn run lint
 ### Run your unit tests
 ```
 yarn run test:unit
+```
+### Create words.json
+```
+cd translator
+./translation.sh
 ```
 
 ### Customize configuration
