@@ -26,14 +26,14 @@ export default {
     start() {
       let timer = setInterval(() => {
         if (this.wordTime > 0) {
-          this.subtractWordTime(4);
+          this.subtractWordTime(10);
         } else {
           //単語をリセット
           this.nextWord();
           this.resetWordTimer();
           this.start();
         }
-      }, 400);
+      }, 1000);
       this.setWordTimer(timer);
     }
   }
