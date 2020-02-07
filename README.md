@@ -1,14 +1,10 @@
 # typo
 
 ## サービスリンク
-```
 https://typo-60d72.firebaseapp.com/#/
-```
 
 ## LT資料
-```
 https://speakerdeck.com/tammax/rekasiensiniakamotannajsnihong-retemita
-```
 
 ## Project setup
 ```
